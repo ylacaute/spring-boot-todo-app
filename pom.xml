@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+    </parent>
+
+    <name>spring boot sample - root</name>
+    <groupId>com.thorpora</groupId>
+    <artifactId>spring-boot-sample</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <organization>
+        <name>Thorpora</name>
+        <url>http://thorpora.fr</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/ylacaute/spring-boot</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>epithor</id>
+            <name>Yannick Lacaute</name>
+            <email>yannick.lacaute at gmail dot com</email>
+            <organization>Freelance</organization>
+            <organizationUrl>http://thorpora.fr</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    <modules>
+        <module>app/gateway</module>
+        <module>module/module-core</module>
+        <module>module/module-core-test</module>
+        <module>module/module-mail</module>
+        <module>module/module-user</module>
+        <module>module/module-todo</module>
+        <module>module/module-sample-async</module>
+        <module>sbtest</module>
+    </modules>
+
+
+    <properties>
+        <!-- GENERAL -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
+
+        <!-- INTERNAL MODULES -->
+        <module-core.version>0.1-SNAPSHOT</module-core.version>
+        <module-mail.version>0.1-SNAPSHOT</module-mail.version>
+        <module-user.version>0.1-SNAPSHOT</module-user.version>
+
+        <!-- CORE -->
+        <javax.inject.version>1</javax.inject.version>
+
+        <!-- SPRING -->
+        <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
+        <spring-security.version>4.2.0.RELEASE</spring-security.version>
+        <spring-data-rest-webmvc.version>2.5.5.RELEASE</spring-data-rest-webmvc.version>
+        <spring-jdbc.version>4.3.5.RELEASE</spring-jdbc.version>
+        <spring-data-jpa.version>1.10.6.RELEASE</spring-data-jpa.version>
+
+        <!-- UTILS -->
+        <commons-lang3.version>3.4</commons-lang3.version>
+
+        <!-- DATABASE -->
+        <h2db.version>1.4.193</h2db.version>
+        <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+
+        <!-- TEST -->
+        <junit.version>4.12</junit.version>
+        <assertj-core.version>3.5.2</assertj-core.version>
+
+    </properties>
+
+    <repositories>
+        <!-- why use that ? -->
+        <!--
+        <repository>
+            <id>thorpora-repo</id>
+            <name>thorpora-repo</name>
+            <url>http://artifactory.thorpora.com/artifactory/thorpora-repo</url>
+        </repository>
+        -->
+        <!--
+            <repository>
+                <id>spring-milestones</id>
+                <name>Spring Milestones</name>
+                <url>http://repo.spring.io/milestone</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+            </repository>
+          -->
+    </repositories>
+
+
+    <profiles>
+        <!-- The Configuration of the development profile -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+        </profile>
+    </profiles>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- DEPENDENCIES CONFIGURATION -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- INTERNAL MODULES -->
+            <dependency>
+                <groupId>com.thorpora</groupId>
+                <artifactId>module-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thorpora</groupId>
+                <artifactId>module-core-test</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.thorpora</groupId>
+                <artifactId>module-mail</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thorpora</groupId>
+                <artifactId>module-todo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thorpora</groupId>
+                <artifactId>module-user</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thorpora</groupId>
+                <artifactId>test-source</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- SPRING  -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-rest-webmvc</artifactId>
+                <version>${spring-data-rest-webmvc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-jdbc.version}</version>
+            </dependency>
+
+            <!-- UTILS -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- DATABASE -->
+            <!-- manage datasource configuration -->
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <!-- postgresql database drivers -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <!-- embedded database drivers -->
+            <!--<dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2db.version}</version>
+                <scope>runtime</scope>
+            </dependency>-->
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- COMMON DEPENDENCIES -->
+    <!-- ~~~~~~~~~~~~~~~~~~~ -->
+    <dependencies>
+        <!-- Java Inject instead of Autowired -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax.inject.version}</version>
+        </dependency>
+        <!-- Spring web framework -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Spring Data and JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- Mail tools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <!-- Thymeleaf template engine (mail template) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!-- Spring Test tools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- PLUGINS CONFIGURATION -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~ -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- INTEGRATION TESTS [GOAL VERIFY] -->
+                <!--
+                  pre-integration-test : set up the integration test environment.
+                  integration-test : run the integration tests.
+                  post-integration-test : tear down the integration test environment.
+                  verify : check the results of the integration tests.
+
+                  Failsafe use integration-test and verify phases
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-failsafe-plugin.version}</version>
+
+
+                    <configuration>
+                        <!-- PARALLEL UNIT TEST -->
+                        <!--<parallel>methods</parallel>
+                        <threadCount>4</threadCount>-->
+                        <excludes>
+                            <include>**/*IT.java</include>
+                        </excludes>
+                        <!--
+                        <includes>
+                            <include>**/*IT.java</include>
+                        </includes>
+-->
+                        <encoding>UTF-8</encoding>
+                        <argLine>-Xms256m -Xmx640m -Dtests.jarhell.check=false -Dtests.security.manager=false
+                            -Dspring.test.context.cache.maxSize=64
+                        </argLine>
+                        <properties>
+                            <property>
+                                <!-- let testNG continue running tests when failure on @Before setup methods -->
+                                <name>configfailurepolicy</name>
+                                <value>continue</value>
+                            </property>
+                            <property>
+                                <!-- testNG provider will not execute junit test, only the junit provider will -->
+                                <name>junit</name>
+                                <value>false</value>
+                            </property>
+
+                        </properties>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+    <!--    <build>
+            <defaultGoal>install</defaultGoal>
+            <pluginManagement>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>${maven-assembly-plugin-version}</version>
+                    </plugin>
+                </plugins>
+            </pluginManagement>
+        </build>-->
+
+</project>

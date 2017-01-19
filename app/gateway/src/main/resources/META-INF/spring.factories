@@ -1,0 +1,9 @@
+
+# Custom Failure Analyzer
+# Help to
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  com.thorpora.gateway.analyzer.StartupFailureAnalyzer,\
+  com.thorpora.gateway.db.DBConfigFailureAnalyzer,\
+  com.thorpora.gateway.db.DBPopulatorFailureAnalyzer
+
+
