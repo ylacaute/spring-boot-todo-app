@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot-sample</artifactId>
+        <groupId>com.thorpora</groupId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>app-gateway</artifactId>
+
+    <properties>
+        <!-- GENERAL -->
+        <!--<main.basedir>${basedir}/../..</main.basedir>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+
+
+        <!-- INTERNAL MODULES -->
+        <module-core.version>0.1-SNAPSHOT</module-core.version>
+        <module-mail.version>0.1-SNAPSHOT</module-mail.version>
+        <module-user.version>0.1-SNAPSHOT</module-user.version>
+
+        <!-- CORE -->
+        <javax.inject.version>1</javax.inject.version>
+
+        <!-- SPRING -->
+        <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
+        <spring-security.version>4.2.0.RELEASE</spring-security.version>
+        <spring-data-rest-webmvc.version>2.5.5.RELEASE</spring-data-rest-webmvc.version>
+        <spring-jdbc.version>4.3.5.RELEASE</spring-jdbc.version>
+        <spring-data-jpa.version>1.10.6.RELEASE</spring-data-jpa.version>
+
+        <!-- UTILS -->
+        <commons-lang3.version>3.4</commons-lang3.version>
+
+        <!-- DATABASE -->
+        <h2db.version>1.4.193</h2db.version>
+        <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+
+        <!-- TEST -->
+        <junit.version>4.12</junit.version>
+        <assertj-core.version>3.5.2</assertj-core.version>
+
+    </properties>
+
+    <dependencies>
+        <!-- INTERNAL MODULES -->
+        <!--<dependency>-->
+            <!--<groupId>com.thorpora</groupId>-->
+            <!--<artifactId>module-core</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.thorpora</groupId>-->
+            <!--<artifactId>module-mail</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.thorpora</groupId>-->
+            <!--<artifactId>module-user</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.thorpora</groupId>-->
+            <!--<artifactId>module-todo</artifactId>-->
+        <!--</dependency>-->
+
+        <!-- Needed to parse ZonedDateTime type -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- DATABASE : PostgreSQL driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-compiler-plugin</artifactId>-->
+            <!--</plugin>-->
+
+
+            <!-- Spring boot packaging plugin -->
+            <!--   version : defined by spring-boot-starter-parent -->
+            <!--   default phase : package -->
+            <!--   default execution goal : repackage -->
+            <!--   auto execute when packaging is set to jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Integration tests plugin (config in parent pom) -->
+            <!--   Default phase : -->
+            <!--   default execution goal :  -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

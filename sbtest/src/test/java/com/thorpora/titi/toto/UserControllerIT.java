@@ -24,13 +24,11 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest(classes = ContextIT.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Transactional
-@Rollback
-@RunWith(SpringRunner.class)
-//@ComponentScan("com.thorpora")
-public class UserControllerIT {
 
+//@ComponentScan("com.thorpora")
+public class UserControllerIT extends AbstractIntTest {
+
+    @Transactional
     @Test
     public void toto() {
         System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");

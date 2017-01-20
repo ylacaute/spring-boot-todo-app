@@ -1,0 +1,14 @@
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/ITContext.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/ResourceVerifier.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/TestRestHelper.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/module/user/SampleIT.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/module/todo/TaskControllerIT.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/module/todo/TodoControllerIT.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/module/user/UserControllerIT.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/module/user/UserServiceIT.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/ResourceListCreator.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/ResourceListVerifier.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/ResourceModifier.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/TestDecorator.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/module/todo/TodoSerializationIt.java
+/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/src/test/java/com/thorpora/test/ResourceCreator.java

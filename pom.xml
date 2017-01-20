@@ -40,19 +40,21 @@
         </developer>
     </developers>
     <modules>
-        <module>app/gateway</module>
-        <module>module/module-core</module>
-        <module>module/module-core-test</module>
-        <module>module/module-mail</module>
-        <module>module/module-user</module>
-        <module>module/module-todo</module>
-        <module>module/module-sample-async</module>
-        <module>sbtest</module>
+        <!--<module>app/gateway</module>-->
+        <!--<module>module/module-core</module>-->
+        <!--<module>module/module-core-test</module>-->
+        <!--<module>module/module-mail</module>-->
+        <!--<module>module/module-user</module>-->
+        <!--<module>module/module-todo</module>-->
+        <!--<module>module/module-sample-async</module>-->
+        <!--<module>sbtest</module>-->
+        <module>app-gateway</module>
     </modules>
 
 
     <properties>
         <!-- GENERAL -->
+        <!--<main.basedir>${basedir}</main.basedir>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
@@ -126,37 +128,37 @@
         <dependencies>
 
             <!-- INTERNAL MODULES -->
-            <dependency>
-                <groupId>com.thorpora</groupId>
-                <artifactId>module-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.thorpora</groupId>
-                <artifactId>module-core-test</artifactId>
-                <version>${project.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.thorpora</groupId>
-                <artifactId>module-mail</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.thorpora</groupId>
-                <artifactId>module-todo</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.thorpora</groupId>
-                <artifactId>module-user</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.thorpora</groupId>
-                <artifactId>test-source</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.thorpora</groupId>-->
+                <!--<artifactId>module-core</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.thorpora</groupId>-->
+                <!--<artifactId>module-core-test</artifactId>-->
+                <!--<version>${project.version}</version>-->
+                <!--<scope>test</scope>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.thorpora</groupId>-->
+                <!--<artifactId>module-mail</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.thorpora</groupId>-->
+                <!--<artifactId>module-todo</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.thorpora</groupId>-->
+                <!--<artifactId>module-user</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>com.thorpora</groupId>-->
+                <!--<artifactId>test-source</artifactId>-->
+                <!--<version>${project.version}</version>-->
+            <!--</dependency>-->
 
             <!-- SPRING  -->
             <dependency>
@@ -256,6 +258,18 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<id>default-compile</id>-->
+                            <!--<phase>none</phase>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
+                <!--</plugin>-->
+
+
                 <!-- INTEGRATION TESTS [GOAL VERIFY] -->
                 <!--
                   pre-integration-test : set up the integration test environment.
@@ -269,42 +283,53 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${maven-failsafe-plugin.version}</version>
-
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
 
                     <configuration>
-                        <!-- PARALLEL UNIT TEST -->
-                        <!--<parallel>methods</parallel>
-                        <threadCount>4</threadCount>-->
-                        <excludes>
-                            <include>**/*IT.java</include>
-                        </excludes>
-                        <!--
                         <includes>
                             <include>**/*IT.java</include>
                         </includes>
--->
+                        <excludes>
+                            <exclude>**/*Abstract*.java</exclude>
+                        </excludes>
+
+                        <!-- PARALLEL UNIT TEST -->
+                        <parallel>suites</parallel>
+                        <threadCount>1</threadCount>
+
+                        <!--<excludes>-->
+                            <!--<include>**/*IT.java</include>-->
+                        <!--</excludes>-->
+
+
                         <encoding>UTF-8</encoding>
                         <argLine>-Xms256m -Xmx640m -Dtests.jarhell.check=false -Dtests.security.manager=false
                             -Dspring.test.context.cache.maxSize=64
                         </argLine>
-                        <properties>
-                            <property>
-                                <!-- let testNG continue running tests when failure on @Before setup methods -->
-                                <name>configfailurepolicy</name>
-                                <value>continue</value>
-                            </property>
-                            <property>
-                                <!-- testNG provider will not execute junit test, only the junit provider will -->
-                                <name>junit</name>
-                                <value>false</value>
-                            </property>
+                        <!--<properties>-->
+                            <!--<property>-->
+                                <!--<name>configfailurepolicy</name>-->
+                                <!--<value>continue</value>-->
+                            <!--</property>-->
 
-                        </properties>
+                        <!--</properties>-->
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
+
+
     </build>
+
+
+
 
 
     <!--    <build>
