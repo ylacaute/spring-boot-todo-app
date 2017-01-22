@@ -36,6 +36,12 @@
     <module>app-gateway</module>
   </modules>
 
+  <scm>
+    <developerConnection>scm:git:git@github.com:ylacaute/spring-boot-todo-app.git</developerConnection>
+    <connection>scm:git:git@github.com:ylacaute/spring-boot-todo-app.git</connection>
+    <tag>HEAD</tag>
+  </scm>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <!-- PROPERTIES CONFIGURATION -->
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
