@@ -4,24 +4,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thorpora.gateway.core.db.DBCleaner;
 import com.thorpora.module.todo.fixture.TaskResourceFixtures;
 import com.thorpora.module.todo.fixture.TodoResourceFixtures;
-import com.thorpora.module.user.UserServiceIT;
-import com.thorpora.test.*;
 import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.repository.TodoRepository;
 import com.thorpora.module.todo.web.TodoController;
-import com.thorpora.module.todo.web.TodoResourceConverter;
+import com.thorpora.test.env.AbstractServletEnvIT;
+import com.thorpora.test.junit.TestDecorator;
+import com.thorpora.test.rest.*;
 import org.junit.*;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -32,11 +28,7 @@ import static org.assertj.core.api.Assertions.*;
 /**
  * Convention name test: resource_action_expectedBehavior
  */
-@SpringBootTest(
-        classes = ITContext.class,
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@RunWith(SpringRunner.class)
-public class TodoControllerIT {
+public class TodoControllerIT extends AbstractServletEnvIT {
 
     private final static Logger log = LoggerFactory.getLogger(TodoControllerIT.class);
 
@@ -221,7 +213,8 @@ public class TodoControllerIT {
 
     @Test
     public void todo_deleteNotExist_validDelete() {
-        restTest.deleteNotExist();
+        final UUID unexistingTodoId = UUID.randomUUID();
+        restTest.deleteNotExist(unexistingTodoId);
     }
 
 

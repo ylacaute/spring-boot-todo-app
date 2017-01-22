@@ -1,5 +1,5 @@
 /**
- * Created by Yannick Lacaute on 29/12/16.
+ * Created by Yannick Lacaute on 18/01/17.
  * Copyright 2015-2016 the original author or authors.
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,25 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thorpora.gateway.core.config;
+package com.thorpora.test.rest;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import com.thorpora.module.core.web.RestResource;
 
-import javax.inject.Inject;
+@FunctionalInterface
+public interface ResourceVerifier<T extends RestResource> {
 
-@Configuration
-public class WebMvcConfig {
-
-
-
-    @Inject
-    public void configureHttpMessageConverters(HttpMessageConverters converters) {
-        //converters.getConverters();
-    }
-
-
+    void verify(T postedResource, T resourceGot);
 
 }

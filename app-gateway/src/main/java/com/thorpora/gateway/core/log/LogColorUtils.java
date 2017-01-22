@@ -53,7 +53,7 @@ public class LogColorUtils {
     }
 
     public static void logStatus(Status status, String primaryText) {
-        logStatus(status, primaryText);
+        logStatus(status, primaryText, null);
     }
 
     public static void logStatus(Status status, String primaryText, String secondaryText) {

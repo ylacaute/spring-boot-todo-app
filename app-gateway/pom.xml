@@ -13,11 +13,11 @@
 
     <properties>
         <!-- GENERAL -->
-        <!--<main.basedir>${basedir}/../..</main.basedir>-->
+        <!--<main.basedir>${basedir}/..</main.basedir>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-
+        <maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
 
         <!-- INTERNAL MODULES -->
         <module-core.version>0.1-SNAPSHOT</module-core.version>
@@ -45,9 +45,85 @@
         <junit.version>4.12</junit.version>
         <assertj-core.version>3.5.2</assertj-core.version>
 
+        <!--<sonar.language>java</sonar.language>-->
+        <!--<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>-->
+        <!--<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>-->
+        <!--<sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>-->
+        <!--<sonar.jacoco.itReportPath>${project.basedir}/../target/itjacoco.exec</sonar.jacoco.itReportPath>-->
+
+
+        <!-- CODE REPORTING -->
+        <!--<coverage.reports.dir>${project.build.directory}/coverage-reports</coverage.reports.dir>-->
+        <!--<sonar.jacoco.reportPath>target</sonar.jacoco.reportPath>-->
+        <!--<sonar.jacoco.utReportPath>target/jacoco-ut.exec</sonar.jacoco.utReportPath>-->
+        <!--<sonar.jacoco.itReportPath>target/jacoco-it.exec</sonar.jacoco.itReportPath>-->
+
+        <!--<sonar.sources>src/main</sonar.sources>-->
+        <!--<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>-->
+        <!--<sonar.surefire.reportsPath>target/surefire-reports</sonar.surefire.reportsPath>-->
+        <!--<sonar.failsafe-reports>target/failsafe-reports</sonar.failsafe-reports>-->
+        <!--<sonar.junit.reportsPath>target/junit-rep</sonar.junit.reportsPath>-->
+
+
+        <jacoco.version>0.7.8</jacoco.version>
+        <sonar.language>java</sonar.language>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <!--<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>-->
+        <sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+
     </properties>
 
+    <profiles>
+        <!--<profile>-->
+            <!--<id>coverage</id>-->
+            <!--<activation>-->
+                <!--<property>-->
+                    <!--<name>coverage</name>-->
+                <!--</property>-->
+            <!--</activation>-->
+            <!--<build>-->
+                <!--<plugins>-->
+                    <!--<plugin>-->
+                        <!--<groupId>org.jacoco</groupId>-->
+                        <!--<artifactId>jacoco-maven-plugin</artifactId>-->
+                        <!--<configuration>-->
+                            <!--<includes>my.root.package.*</includes>-->
+                            <!--<destFile>${sonar.jacoco.reportPath}</destFile>-->
+                            <!--<dataFile>${sonar.jacoco.reportPath}</dataFile>-->
+                        <!--</configuration>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>pre-junit-test</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>prepare-agent</goal>-->
+                                <!--</goals>-->
+                            <!--</execution>-->
+                            <!--<execution>-->
+                                <!--<id>post-test</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>report</goal>-->
+                                <!--</goals>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
+                <!--</plugins>-->
+            <!--</build>-->
+        <!--</profile>-->
+
+    </profiles>
+
+
     <dependencies>
+
+        <dependency>
+            <groupId>org.codehaus.sonar-plugins.java</groupId>
+            <artifactId>sonar-jacoco-listeners</artifactId>
+            <version>3.2</version>
+        </dependency>
+
+
+
         <!-- INTERNAL MODULES -->
         <!--<dependency>-->
             <!--<groupId>com.thorpora</groupId>-->
@@ -66,7 +142,7 @@
             <!--<artifactId>module-todo</artifactId>-->
         <!--</dependency>-->
 
-        <!-- Needed to parse ZonedDateTime type -->
+        <!-- Needed to parse ZonedDateTime env -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
@@ -90,33 +166,187 @@
             <scope>test</scope>
         </dependency>
 
+
     </dependencies>
 
     <build>
         <plugins>
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-compiler-plugin</artifactId>-->
-            <!--</plugin>-->
-
-
-            <!-- Spring boot packaging plugin -->
-            <!--   version : defined by spring-boot-starter-parent -->
-            <!--   default phase : package -->
-            <!--   default execution goal : repackage -->
-            <!--   auto execute when packaging is set to jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- Integration tests plugin (config in parent pom) -->
-            <!--   Default phase : -->
-            <!--   default execution goal :  -->
+
+
+
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-surefire-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<parallel>methods</parallel>-->
+            <!--<threadCount>4</threadCount>-->
+            <!--<argLine>-Xmx1G -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled </argLine>&lt;!&ndash;${jacoco.agent.ut.arg}&ndash;&gt;-->
+            <!--<excludes>-->
+            <!--<exclude>**/*IntegrationTest*</exclude>-->
+            <!--</excludes>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <!--<argLine>${surefireArgLine}</argLine>-->
+                    <includes>
+                        <include>**/*Test</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*Abstract*.java</exclude>
+                    </excludes>
+                    <!--<property>-->
+                        <!--<name>listener</name>-->
+                        <!--<value>org.sonar.java.jacoco.JUnitListener</value>-->
+                    <!--</property>-->
+                </configuration>
+            </plugin>
+
+
+
+
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-failsafe-plugin</artifactId>-->
+            <!--</plugin>-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>-->
+                    <!-- Real integration tests with a server started on a random port -->
+                    <groups>${it.categories}</groups>
+                    <includes>
+                        <include>**/*IT.java</include> <!-- Default: **/IT*.java, **/*IT.java, **/*ITCase.java -->
+                    </includes>
+                    <excludes>
+                        <exclude>**/*Abstract*.java</exclude>
+                    </excludes>
+                    <parallel>suites</parallel>
+                    <threadCount>1</threadCount>
+                    <encoding>UTF-8</encoding>
+                    <!--<argLine>-Xms256m -Xmx640m ${failsafeArgLine}</argLine>-->
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>com.thorpora.test.rest.FailSafeLoggerListener</value>
+                        </property>
+                    </properties>
+                </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+
+                <configuration>
+                    <append>true</append>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>agent-for-ut</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>agent-for-it</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--<plugin>-->
+                <!--<groupId>org.jacoco</groupId>-->
+                <!--<artifactId>jacoco-maven-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>pre-unit-test</id>-->
+                        <!--<goals>-->
+                            <!--<goal>prepare-agent</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<destFile>-->
+                                <!--${sonar.jacoco.utReportPath}-->
+                            <!--</destFile>-->
+                            <!--<propertyName>surefireArgLine</propertyName>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+
+
+                    <!--<execution>-->
+                        <!--<id>post-unit-test</id>-->
+                        <!--<phase>test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>report</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<dataFile>-->
+                                <!--${sonar.jacoco.utReportPath}-->
+                            <!--</dataFile>-->
+                            <!--<outputDirectory>-->
+                                <!--${project.reporting.outputDirectory}/jacoco-ut-->
+                            <!--</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>pre-integration-test</id>-->
+                        <!--<phase>pre-integration-test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>prepare-agent</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<destFile>-->
+                                <!--${sonar.jacoco.itReportPath}-->
+                            <!--</destFile>-->
+                            <!--<propertyName>failsafeArgLine</propertyName>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>post-integration-test</id>-->
+                        <!--<phase>post-integration-test</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>report</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<dataFile>-->
+                                <!--${sonar.jacoco.itReportPath}-->
+                            <!--</dataFile>-->
+                            <!--<outputDirectory>-->
+                                <!--${project.reporting.outputDirectory}/jacoco-it-->
+                            <!--</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
 
         </plugins>
     </build>

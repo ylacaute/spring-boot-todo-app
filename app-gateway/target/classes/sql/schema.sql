@@ -1,3 +1,0 @@
---SET MODE PostgreSQL;
---DROP SCHEMA thorpora;
---CREATE SCHEMA thorpora;

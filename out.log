@@ -15880,3 +15880,139 @@ Unconditional classes:
 
 2017-01-20 10:27:03.952  INFO 9778 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2017-01-20 10:27:03.962  INFO 9778 --- [main] com.thorpora.gateway.core.Application    : Started Application in 10.552 seconds (JVM running for 11.156)
+2017-01-20 22:57:31.613  INFO 16178 --- [main] com.thorpora.gateway.core.Application    : Starting Application on epi-pc with PID 16178 (/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/target/classes started by epi in /home/epi/prog/github/pub/java/spring-boot-sample)
+2017-01-20 22:57:31.626  INFO 16178 --- [main] com.thorpora.gateway.core.Application    : No active profile set, falling back to default profiles: default
+2017-01-20 22:57:32.235  INFO 16178 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@9d5509a: startup date [Fri Jan 20 22:57:32 CET 2017]; root of context hierarchy
+2017-01-20 22:57:34.346  INFO 16178 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-01-20 22:57:34.529  INFO 16178 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7b3c9503] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-01-20 22:57:35.243  INFO 16178 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-01-20 22:57:35.261  INFO 16178 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-01-20 22:57:35.263  INFO 16178 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.6
+2017-01-20 22:57:35.402  INFO 16178 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-01-20 22:57:35.403  INFO 16178 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3178 ms
+2017-01-20 22:57:35.680  INFO 16178 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-01-20 22:57:35.686  INFO 16178 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-01-20 22:57:35.687  INFO 16178 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-01-20 22:57:35.687  INFO 16178 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-01-20 22:57:35.687  INFO 16178 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-01-20 22:57:36.130  INFO 16178 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-01-20 22:57:36.161  INFO 16178 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-01-20 22:57:36.273  INFO 16178 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.11.Final}
+2017-01-20 22:57:36.275  INFO 16178 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-01-20 22:57:36.277  INFO 16178 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-01-20 22:57:36.330  INFO 16178 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-01-20 22:57:36.792  INFO 16178 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-01-20 22:57:37.078  INFO 16178 --- [main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-01-20 22:57:37.081  INFO 16178 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@7302ff13
+2017-01-20 22:57:37.328  WARN 16178 --- [main] o.h.t.d.java.JavaTypeDescriptorRegistry  : Could not find matching type descriptor for requested Java class [java.util.Map]; using fallback
+2017-01-20 22:57:37.728  INFO 16178 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-01-20 22:57:37.732 ERROR 16178 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table todo_tasks drop constraint FKrait9orbss1x8iv3cavwuktn0
+2017-01-20 22:57:37.751 ERROR 16178 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : ERREUR: la relation « todo_tasks » n'existe pas
+2017-01-20 22:57:37.752 ERROR 16178 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table todo_tasks drop constraint FKmbqp78xl10s78d7jxs7kfv80u
+2017-01-20 22:57:37.752 ERROR 16178 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : ERREUR: la relation « todo_tasks » n'existe pas
+2017-01-20 22:57:37.986  INFO 16178 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-01-20 22:57:38.053  INFO 16178 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-01-20 22:57:39.640  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@9d5509a: startup date [Fri Jan 20 22:57:32 CET 2017]; root of context hierarchy
+2017-01-20 22:57:39.770  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public com.thorpora.module.core.error.ErrorDTO com.thorpora.module.core.error.ErrorController.onServletError(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-01-20 22:57:39.800  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/users],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.thorpora.module.user.web.UserResource>> com.thorpora.module.user.web.UserController.getListRequest()
+2017-01-20 22:57:39.801  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user/{id}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.user.web.UserResource> com.thorpora.module.user.web.UserController.putRequest(java.util.UUID,com.thorpora.module.user.web.UserResource)
+2017-01-20 22:57:39.803  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user/{id}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> com.thorpora.module.user.web.UserController.deleteRequest(java.util.UUID)
+2017-01-20 22:57:39.805  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.user.web.UserResource> com.thorpora.module.user.web.UserController.postRequest(com.thorpora.module.user.web.UserResource)
+2017-01-20 22:57:39.807  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user/{id}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.user.web.UserResource> com.thorpora.module.user.web.UserController.getRequest(java.util.UUID)
+2017-01-20 22:57:39.815  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todos],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.thorpora.module.todo.TodoResource>> com.thorpora.module.todo.web.TodoController.getListRequest()
+2017-01-20 22:57:39.815  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{id}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TodoResource> com.thorpora.module.todo.web.TodoController.putRequest(java.util.UUID,com.thorpora.module.todo.TodoResource)
+2017-01-20 22:57:39.815  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{id}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> com.thorpora.module.todo.web.TodoController.deleteRequest(java.util.UUID)
+2017-01-20 22:57:39.816  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TodoResource> com.thorpora.module.todo.web.TodoController.postRequest(com.thorpora.module.todo.TodoResource)
+2017-01-20 22:57:39.816  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{id}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TodoResource> com.thorpora.module.todo.web.TodoController.getRequest(java.util.UUID)
+2017-01-20 22:57:39.818  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TaskResource> com.thorpora.module.todo.web.TaskController.postResource(java.util.UUID,com.thorpora.module.todo.TaskResource)
+2017-01-20 22:57:39.819  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task/{id}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TaskResource> com.thorpora.module.todo.web.TaskController.putResource(java.util.UUID,java.util.UUID,com.thorpora.module.todo.TaskResource)
+2017-01-20 22:57:39.820  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task/{id}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> com.thorpora.module.todo.web.TaskController.deleteResource(java.util.UUID,java.util.UUID)
+2017-01-20 22:57:39.820  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task/{id}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TaskResource> com.thorpora.module.todo.web.TaskController.getResource(java.util.UUID,java.util.UUID)
+2017-01-20 22:57:39.820  INFO 16178 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/tasks],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.thorpora.module.todo.TaskResource>> com.thorpora.module.todo.web.TaskController.getResources(java.util.UUID)
+2017-01-20 22:57:39.870  INFO 16178 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-01-20 22:57:39.870  INFO 16178 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-01-20 22:57:39.899  INFO 16178 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in ErrorController
+2017-01-20 22:57:39.941  INFO 16178 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-01-20 22:57:40.431  INFO 16178 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-01-20 22:57:40.444  INFO 16178 --- [main] c.thorpora.gateway.core.db.DBPopulator   : Populate DB
+2017-01-20 22:57:40.447  INFO 16178 --- [main] c.thorpora.gateway.core.db.DBPopulator   : Number of users to populate (from properties) : 0
+2017-01-20 22:57:40.644  INFO 16178 --- [main] c.thorpora.gateway.core.db.DBPopulator   : DB populated
+2017-01-20 22:57:40.717  INFO 16178 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-01-20 22:57:40.724  INFO 16178 --- [main] com.thorpora.gateway.core.Application    : Started Application in 10.206 seconds (JVM running for 10.821)
+2017-01-20 23:01:04.152  INFO 16178 --- [Thread-3] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@9d5509a: startup date [Fri Jan 20 22:57:32 CET 2017]; root of context hierarchy
+2017-01-20 23:01:04.154  INFO 16178 --- [Thread-3] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-01-20 23:01:04.156  INFO 16178 --- [Thread-3] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-01-20 23:01:04.157  INFO 16178 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-01-20 23:01:04.161 ERROR 16178 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table todo_tasks drop constraint FKrait9orbss1x8iv3cavwuktn0
+2017-01-20 23:01:04.161 ERROR 16178 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : ERREUR: la relation « todo_tasks » n'existe pas
+2017-01-20 23:01:04.161 ERROR 16178 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table todo_tasks drop constraint FKmbqp78xl10s78d7jxs7kfv80u
+2017-01-20 23:01:04.162 ERROR 16178 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : ERREUR: la relation « todo_tasks » n'existe pas
+2017-01-20 23:01:04.164  INFO 16178 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-01-20 23:02:31.899  INFO 16793 --- [main] com.thorpora.gateway.core.Application    : Starting Application on epi-pc with PID 16793 (/home/epi/prog/github/pub/java/spring-boot-sample/app-gateway/target/classes started by epi in /home/epi/prog/github/pub/java/spring-boot-sample)
+2017-01-20 23:02:31.907  INFO 16793 --- [main] com.thorpora.gateway.core.Application    : No active profile set, falling back to default profiles: default
+2017-01-20 23:02:32.806  INFO 16793 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b0090a4: startup date [Fri Jan 20 23:02:32 CET 2017]; root of context hierarchy
+2017-01-20 23:02:34.785  INFO 16793 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-01-20 23:02:34.955  INFO 16793 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c30eb587] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-01-20 23:02:35.679  INFO 16793 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-01-20 23:02:35.705  INFO 16793 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-01-20 23:02:35.707  INFO 16793 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.6
+2017-01-20 23:02:35.823  INFO 16793 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-01-20 23:02:35.824  INFO 16793 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3023 ms
+2017-01-20 23:02:36.046  INFO 16793 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-01-20 23:02:36.052  INFO 16793 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-01-20 23:02:36.053  INFO 16793 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-01-20 23:02:36.053  INFO 16793 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-01-20 23:02:36.054  INFO 16793 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-01-20 23:02:36.559  INFO 16793 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-01-20 23:02:36.590  INFO 16793 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-01-20 23:02:36.732  INFO 16793 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.11.Final}
+2017-01-20 23:02:36.734  INFO 16793 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-01-20 23:02:36.736  INFO 16793 --- [main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-01-20 23:02:36.800  INFO 16793 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-01-20 23:02:37.308  INFO 16793 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2017-01-20 23:02:37.593  INFO 16793 --- [main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-01-20 23:02:37.596  INFO 16793 --- [main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@1961d75a
+2017-01-20 23:02:37.847  WARN 16793 --- [main] o.h.t.d.java.JavaTypeDescriptorRegistry  : Could not find matching type descriptor for requested Java class [java.util.Map]; using fallback
+2017-01-20 23:02:38.246  INFO 16793 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-01-20 23:02:38.249 ERROR 16793 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table todo_tasks drop constraint FKrait9orbss1x8iv3cavwuktn0
+2017-01-20 23:02:38.249 ERROR 16793 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : ERREUR: la relation « todo_tasks » n'existe pas
+2017-01-20 23:02:38.250 ERROR 16793 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table todo_tasks drop constraint FKmbqp78xl10s78d7jxs7kfv80u
+2017-01-20 23:02:38.250 ERROR 16793 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : ERREUR: la relation « todo_tasks » n'existe pas
+2017-01-20 23:02:38.492  INFO 16793 --- [main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-01-20 23:02:38.551  INFO 16793 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-01-20 23:02:40.090  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b0090a4: startup date [Fri Jan 20 23:02:32 CET 2017]; root of context hierarchy
+2017-01-20 23:02:40.245  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public com.thorpora.module.core.error.ErrorDTO com.thorpora.module.core.error.ErrorController.onServletError(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-01-20 23:02:40.276  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.user.web.UserResource> com.thorpora.module.user.web.UserController.postRequest(com.thorpora.module.user.web.UserResource)
+2017-01-20 23:02:40.276  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user/{id}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.user.web.UserResource> com.thorpora.module.user.web.UserController.getRequest(java.util.UUID)
+2017-01-20 23:02:40.278  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/users],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.thorpora.module.user.web.UserResource>> com.thorpora.module.user.web.UserController.getListRequest()
+2017-01-20 23:02:40.280  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user/{id}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.user.web.UserResource> com.thorpora.module.user.web.UserController.putRequest(java.util.UUID,com.thorpora.module.user.web.UserResource)
+2017-01-20 23:02:40.281  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/user/{id}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> com.thorpora.module.user.web.UserController.deleteRequest(java.util.UUID)
+2017-01-20 23:02:40.287  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TodoResource> com.thorpora.module.todo.web.TodoController.postRequest(com.thorpora.module.todo.TodoResource)
+2017-01-20 23:02:40.288  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{id}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TodoResource> com.thorpora.module.todo.web.TodoController.getRequest(java.util.UUID)
+2017-01-20 23:02:40.288  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todos],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.thorpora.module.todo.TodoResource>> com.thorpora.module.todo.web.TodoController.getListRequest()
+2017-01-20 23:02:40.289  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{id}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TodoResource> com.thorpora.module.todo.web.TodoController.putRequest(java.util.UUID,com.thorpora.module.todo.TodoResource)
+2017-01-20 23:02:40.289  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{id}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> com.thorpora.module.todo.web.TodoController.deleteRequest(java.util.UUID)
+2017-01-20 23:02:40.293  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TaskResource> com.thorpora.module.todo.web.TaskController.postResource(java.util.UUID,com.thorpora.module.todo.TaskResource)
+2017-01-20 23:02:40.294  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task/{id}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TaskResource> com.thorpora.module.todo.web.TaskController.putResource(java.util.UUID,java.util.UUID,com.thorpora.module.todo.TaskResource)
+2017-01-20 23:02:40.294  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task/{id}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.Void> com.thorpora.module.todo.web.TaskController.deleteResource(java.util.UUID,java.util.UUID)
+2017-01-20 23:02:40.295  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/task/{id}],methods=[GET]}" onto public org.springframework.http.ResponseEntity<com.thorpora.module.todo.TaskResource> com.thorpora.module.todo.web.TaskController.getResource(java.util.UUID,java.util.UUID)
+2017-01-20 23:02:40.295  INFO 16793 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/todo/{todoId}/tasks],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.util.List<com.thorpora.module.todo.TaskResource>> com.thorpora.module.todo.web.TaskController.getResources(java.util.UUID)
+2017-01-20 23:02:40.342  INFO 16793 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-01-20 23:02:40.342  INFO 16793 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-01-20 23:02:40.361  INFO 16793 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : Detected @ExceptionHandler methods in ErrorController
+2017-01-20 23:02:40.386  INFO 16793 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-01-20 23:02:40.780  INFO 16793 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-01-20 23:02:40.799  INFO 16793 --- [main] c.thorpora.gateway.core.db.DBPopulator   : Populate DB
+2017-01-20 23:02:40.799  INFO 16793 --- [main] c.thorpora.gateway.core.db.DBPopulator   : Number of users to populate (from properties) : 0
+2017-01-20 23:02:40.918  INFO 16793 --- [main] c.thorpora.gateway.core.db.DBPopulator   : DB populated
+2017-01-20 23:02:40.967  INFO 16793 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-01-20 23:02:40.972  INFO 16793 --- [main] com.thorpora.gateway.core.Application    : Started Application in 10.175 seconds (JVM running for 10.773)
+2017-01-20 23:02:43.860  INFO 16793 --- [Thread-3] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3b0090a4: startup date [Fri Jan 20 23:02:32 CET 2017]; root of context hierarchy
+2017-01-20 23:02:43.862  INFO 16793 --- [Thread-3] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-01-20 23:02:43.867  INFO 16793 --- [Thread-3] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-01-20 23:02:43.868  INFO 16793 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-01-20 23:02:43.888  INFO 16793 --- [Thread-3] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete

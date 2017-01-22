@@ -7,7 +7,10 @@ import com.thorpora.module.user.fixture.UserResourceFixtures;
 import com.thorpora.module.user.repository.UserRepository;
 import com.thorpora.module.user.web.UserController;
 import com.thorpora.module.user.web.UserResource;
-import com.thorpora.test.*;
+import com.thorpora.test.context.ITContext;
+import com.thorpora.test.env.AbstractServletEnvIT;
+import com.thorpora.test.junit.TestDecorator;
+import com.thorpora.test.rest.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,11 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Convention name test: resource_action_expectedBehavior
  */
-@SpringBootTest(
-        classes = ITContext.class,
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@RunWith(SpringRunner.class)
-public class UserControllerIT {
+public class UserControllerIT extends AbstractServletEnvIT {
 
     @Inject
     private ObjectMapper jMapper;
@@ -79,84 +78,85 @@ public class UserControllerIT {
         restTest.getManyWithoutResult();
     }
 
-//    @Test
-//    public void user_postOne_validPost() {
-//        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
-//        ResourceVerifier<UserResource> verifier = this::genericVerifier;
-//        restTest.postOne(creator, verifier);
-//    }
-//
-//    @Test
-//    public void user_postOneAndGetIt_validGet() {
-//        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
-//        ResourceVerifier<UserResource> verifier = this::genericVerifier;
-//        restTest.postOneAndGetIt(creator, verifier);
-//    }
-//
-//    @Test
-//    public void task_postManyAndGetThem_validGet() {
-//        final int userCount = 5;
-//        final int specificTaskTaskCount = 3;
-//
-//        ResourceListCreator<UserResource> creator = () -> {
-//            Collection<UserResource> resources = UserResourceFixtures
-//                    .create(userCount - 1);
-//            resources.add(UserResourceFixtures.builder()
-//                    .login(randomUUUID.toString())
-//                    .build());
-//            return resources;
-//        };
-//
-//        ResourceListVerifier<UserResource> verifier = (resourcesGot) -> {
-//
-//            // Verify we got all elements
-//            assertThat(resourcesGot).hasSize(userCount);
-//
-//            // Verify a particular element
-//            Optional<UserResource> task = resourcesGot.stream()
-//                    .filter(r -> r.getLogin().equals(randomUUUID.toString()))
-//                    .findFirst();
-//            assertThat(task.isPresent()).isTrue();
-//        };
-//
-//        restTest.postManyAndGetThem(creator, verifier);
-//    }
-//
-//    @Test
-//    public void user_postOnePutItWithoutModificationAndGetIt_validGet() {
-//        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
-//        ResourceModifier<UserResource> modifier = (r) -> r;
-//        ResourceVerifier<UserResource> verifier = this::genericVerifier;
-//        restTest.postOnePutItAndGetIt(creator, modifier, verifier);
-//    }
-//
-//    @Test
-//    public void user_postOnePutItAndGetIt_validGet() {
-//        final String initalLogin = "login";
-//
-//        ResourceCreator<UserResource> creator = () ->
-//                UserResourceFixtures.builder().login(initalLogin).build();
-//        ResourceModifier<UserResource> modifier = (r) -> {
-//            r.setLogin(randomUUUID.toString());
-//            return r;
-//        };
-//        ResourceVerifier<UserResource> verifier = (postedRrc, rscGot) -> {
-//            assertThat(rscGot.getLogin()).isEqualTo(randomUUUID.toString());
-//        };
-//
-//        restTest.postOnePutItAndGetIt(creator, modifier, verifier);
-//    }
-//
-//    @Test
-//    public void user_postOneDeleteItAndGetItNotFound_validGet() {
-//        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
-//        restTest.postOneDeleteItAndGetItNotFound(creator);
-//    }
-//
-//    @Test
-//    public void user_deleteNotExist_validDelete() {
-//        restTest.deleteNotExist();
-//    }
+    @Test
+    public void user_postOne_validPost() {
+        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
+        ResourceVerifier<UserResource> verifier = this::genericVerifier;
+        restTest.postOne(creator, verifier);
+    }
+
+    @Test
+    public void user_postOneAndGetIt_validGet() {
+        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
+        ResourceVerifier<UserResource> verifier = this::genericVerifier;
+        restTest.postOneAndGetIt(creator, verifier);
+    }
+
+    @Test
+    public void task_postManyAndGetThem_validGet() {
+        final int userCount = 5;
+        final int specificTaskTaskCount = 3;
+
+        ResourceListCreator<UserResource> creator = () -> {
+            Collection<UserResource> resources = UserResourceFixtures
+                    .create(userCount - 1);
+            resources.add(UserResourceFixtures.builder()
+                    .login(randomUUUID.toString())
+                    .build());
+            return resources;
+        };
+
+        ResourceListVerifier<UserResource> verifier = (resourcesGot) -> {
+
+            // Verify we got all elements
+            assertThat(resourcesGot).hasSize(userCount);
+
+            // Verify a particular element
+            Optional<UserResource> task = resourcesGot.stream()
+                    .filter(r -> r.getLogin().equals(randomUUUID.toString()))
+                    .findFirst();
+            assertThat(task.isPresent()).isTrue();
+        };
+
+        restTest.postManyAndGetThem(creator, verifier);
+    }
+
+    @Test
+    public void user_postOnePutItWithoutModificationAndGetIt_validGet() {
+        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
+        ResourceModifier<UserResource> modifier = (r) -> r;
+        ResourceVerifier<UserResource> verifier = this::genericVerifier;
+        restTest.postOnePutItAndGetIt(creator, modifier, verifier);
+    }
+
+    @Test
+    public void user_postOnePutItAndGetIt_validGet() {
+        final String initalLogin = "login";
+
+        ResourceCreator<UserResource> creator = () ->
+                UserResourceFixtures.builder().login(initalLogin).build();
+        ResourceModifier<UserResource> modifier = (r) -> {
+            r.setLogin(randomUUUID.toString());
+            return r;
+        };
+        ResourceVerifier<UserResource> verifier = (postedRrc, rscGot) -> {
+            assertThat(rscGot.getLogin()).isEqualTo(randomUUUID.toString());
+        };
+
+        restTest.postOnePutItAndGetIt(creator, modifier, verifier);
+    }
+
+    @Test
+    public void user_postOneDeleteItAndGetItNotFound_validGet() {
+        ResourceCreator<UserResource> creator = UserResourceFixtures::create;
+        restTest.postOneDeleteItAndGetItNotFound(creator);
+    }
+
+    @Test
+    public void user_deleteNotExist_validDelete() {
+        final UUID unexistingUserId = UUID.randomUUID();
+        restTest.deleteNotExist(unexistingUserId);
+    }
 
     private void genericVerifier(UserResource postedResource, UserResource resourceGot) {
         assertThat(postedResource.getEmail()).isEqualTo(resourceGot.getEmail());

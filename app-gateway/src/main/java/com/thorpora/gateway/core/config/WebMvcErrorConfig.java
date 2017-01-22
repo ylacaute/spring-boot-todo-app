@@ -24,6 +24,7 @@ import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -45,6 +46,7 @@ public class WebMvcErrorConfig {
     public ErrorLogger errorLogger() {
         ErrorLogger errorLogger = new ErrorLogger();
         errorLogger.map(Level.INFO, EntityNotFoundException.class);
+        errorLogger.map(Level.INFO, EmptyResultDataAccessException.class);
         return errorLogger;
     }
 }
