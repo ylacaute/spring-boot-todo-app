@@ -25,17 +25,10 @@ import javax.inject.Inject;
 @Configuration
 public class JsonConfig {
 
-    /**
-     * Override default Spring Jackson configuration
-     */
     @Inject
     public void configureJackson(Jackson2ObjectMapperBuilder jackson2ObjectMapperBuilder) {
         jackson2ObjectMapperBuilder.serializationInclusion(JsonInclude.Include.NON_NULL);
         jackson2ObjectMapperBuilder.indentOutput(true);
-        //JavaTimeModule
-        //jackson2ObjectMapperBuilder.
-
-        //MAPPER.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
 }

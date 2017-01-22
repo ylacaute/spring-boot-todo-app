@@ -7,18 +7,14 @@ import com.thorpora.module.user.fixture.UserResourceFixtures;
 import com.thorpora.module.user.repository.UserRepository;
 import com.thorpora.module.user.web.UserController;
 import com.thorpora.module.user.web.UserResource;
-import com.thorpora.test.context.ITContext;
 import com.thorpora.test.env.AbstractServletEnvIT;
 import com.thorpora.test.junit.TestDecorator;
 import com.thorpora.test.rest.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;

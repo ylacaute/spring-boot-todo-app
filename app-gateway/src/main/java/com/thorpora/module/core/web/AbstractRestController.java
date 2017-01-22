@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+// TODO Use composition, not inheritance (?)
 @RestController
 public class AbstractRestController<Resource extends RestResource, Entity extends AbstractRestEntity> {
 

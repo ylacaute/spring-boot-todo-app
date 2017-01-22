@@ -19,7 +19,6 @@ package com.thorpora.module.todo.fixture;
 import com.thorpora.module.todo.domain.Task;
 import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.web.TodoController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

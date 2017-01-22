@@ -16,15 +16,10 @@
  */
 package com.thorpora.module.todo;
 
-import com.thorpora.module.mail.core.MailService;
 import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.fixture.TodoFixtures;
 import com.thorpora.module.todo.repository.TodoRepository;
 import com.thorpora.module.todo.service.TodoService;
-import com.thorpora.module.user.UserServiceIT;
-import com.thorpora.module.user.fixture.UserFixtures;
-import com.thorpora.module.user.repository.UserRepository;
-import com.thorpora.module.user.service.UserService;
 import com.thorpora.test.junit.TestDecorator;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -37,7 +32,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 

@@ -7,13 +7,11 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.4.3.RELEASE</version>
   </parent>
-
   <name>spring boot sample - root</name>
   <groupId>com.thorpora</groupId>
   <artifactId>spring-boot-sample</artifactId>
   <version>0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-
   <organization>
     <name>Thorpora</name>
     <url>http://thorpora.fr</url>
@@ -24,30 +22,17 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
   </licenses>
-  <scm>
-    <url>https://github.com/ylacaute/spring-boot</url>
-  </scm>
   <developers>
     <developer>
-      <id>epithor</id>
+      <id>epi</id>
       <name>Yannick Lacaute</name>
       <email>yannick.lacaute at gmail dot com</email>
-      <organization>Freelance</organization>
-      <organizationUrl>http://thorpora.fr</organizationUrl>
       <roles>
         <role>Developer</role>
       </roles>
     </developer>
   </developers>
   <modules>
-    <!--<module>app/gateway</module>-->
-    <!--<module>module/module-core</module>-->
-    <!--<module>module/module-core-test</module>-->
-    <!--<module>module/module-mail</module>-->
-    <!--<module>module/module-user</module>-->
-    <!--<module>module/module-todo</module>-->
-    <!--<module>module/module-sample-async</module>-->
-    <!--<module>sbtest</module>-->
     <module>app-gateway</module>
   </modules>
 
@@ -59,77 +44,36 @@
     <!--<main.basedir>${basedir}</main.basedir>-->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <!--<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>-->
-
     <java.version>1.8</java.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
-
-    <!-- INTERNAL MODULES -->
-    <module-core.version>0.1-SNAPSHOT</module-core.version>
-    <module-mail.version>0.1-SNAPSHOT</module-mail.version>
-    <module-user.version>0.1-SNAPSHOT</module-user.version>
 
     <!-- CORE -->
     <javax.inject.version>1</javax.inject.version>
 
     <!-- SPRING -->
     <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
-    <spring-security.version>4.2.0.RELEASE</spring-security.version>
-    <spring-data-rest-webmvc.version>2.5.5.RELEASE</spring-data-rest-webmvc.version>
-    <spring-jdbc.version>4.3.5.RELEASE</spring-jdbc.version>
-    <spring-data-jpa.version>1.10.6.RELEASE</spring-data-jpa.version>
 
     <!-- UTILS -->
     <commons-lang3.version>3.4</commons-lang3.version>
 
     <!-- DATABASE -->
-    <h2db.version>1.4.193</h2db.version>
     <postgresql.version>9.4-1201-jdbc41</postgresql.version>
-
-    <!-- TEST -->
-    <junit.version>4.12</junit.version>
-    <assertj-core.version>3.5.2</assertj-core.version>
-
-    <!-- SONAR config
-    We want to analyse both src/main AND src/test files.
-    For instance, if there is a "disallowed usage" rule (e.g. Calendar.getInstance) in a test file, we want it to be displayed in the issues list.
-    Adding src/test to analysis throws an exception: "File XXX can't be indexed twice."
-    Sonar default behavior:
-    - analyse source files (only src/main by default)
-    - run test files to get coverage (here are thrown "File indexed twice" errors if tests are added to sources)
-
-    Excluding tests skips the coverage part and so files are indexed only once
-    -->
+    <h2db.version>1.4.193</h2db.version>
 
     <!-- SONAR CONFIGURATION -->
-      <!-- Unit test : mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true -->
+    <!-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true -->
+    <!--<jacoco.version>0.7.8</jacoco.version>-->
+    <!--<sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>-->
     <!--<sonar.dryRun.readTimeout>60</sonar.dryRun.readTimeout>-->
     <!--<sonar.preview.readTimeout>60</sonar.preview.readTimeout>-->
-    <!--<sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>-->
     <!--<sonar.language>java</sonar.language>-->
-    <!--<sonar.sources>src</sonar.sources>-->
-    <!--<sonar.test.inclusions>**/*IT,**/*Test</sonar.test.inclusions>-->
-    <!--<sonar.test.exclusions>**/*Abstract*</sonar.test.exclusions>-->
     <!--<sonar.java.binaries>target/classes,target/test-classes</sonar.java.binaries>-->
     <!--<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>-->
-    <!--<jacoco.outputDir>${project.build.directory}/jacoco</jacoco.outputDir>-->
-    <!--<jacoco.outputDir>${project.basedir}/target/jacoco</jacoco.outputDir>-->
-    <!--<sonar.jacoco.reportPath>${jacoco.outputDir}/jacoco-ut.exec}</sonar.jacoco.reportPath>-->
-    <!--<sonar.jacoco.itReportPath>${jacoco.outputDir}/jacoco-it.exec</sonar.jacoco.itReportPath>-->
-    <!--<sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>-->
-    <!--<sonar.java.libraries>target/alljars/*.jar</sonar.java.libraries>-->
-
-
     <!--<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>-->
-    <!--<jacoco.version>0.7.8</jacoco.version>-->
     <!--<sonar.language>java</sonar.language>-->
     <!--<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>-->
     <!--<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>-->
-
-    <!--<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>-->
-
   </properties>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -141,9 +85,7 @@
   <!-- ~~~~~~~~~~~~~~~~~~~~~ -->
   <!-- PROFILE CONFIGURATION -->
   <!-- ~~~~~~~~~~~~~~~~~~~~~ -->
-
   <profiles>
-
     <!-- Development profile : skip all IT -->
     <profile>
       <id>dev</id>
@@ -154,16 +96,14 @@
         <skipITs>true</skipITs>
       </properties>
     </profile>
-
-    <!-- Integration profile : skip only slow IT -->
+    <!-- Integration profile : only IT on mocked server -->
     <profile>
       <id>int</id>
       <properties>
         <it.categories>com.thorpora.test.env.MockedServletCategory</it.categories>
       </properties>
     </profile>
-
-    <!-- Production profile : run all IT -->
+    <!-- Production profile : all IT -->
     <profile>
       <id>prod</id>
       <properties>
@@ -173,56 +113,6 @@
         </it.category>
       </properties>
     </profile>
-
-
-    <!--<profile>-->
-    <!--<id>sonar-coverage</id>-->
-    <!--<activation>-->
-    <!--<activeByDefault>true</activeByDefault>-->
-    <!--</activation>-->
-    <!--<build>-->
-    <!--<pluginManagement>-->
-    <!--<plugins>-->
-    <!--<plugin>-->
-    <!--<groupId>org.jacoco</groupId>-->
-    <!--<artifactId>jacoco-maven-plugin</artifactId>-->
-    <!--<version>0.7.8</version>-->
-    <!--</plugin>-->
-    <!--</plugins>-->
-    <!--</pluginManagement>-->
-    <!--<plugins>-->
-    <!--<plugin>-->
-    <!--<groupId>org.jacoco</groupId>-->
-    <!--<artifactId>jacoco-maven-plugin</artifactId>-->
-    <!--<configuration>-->
-    <!--<append>true</append>-->
-    <!--</configuration>-->
-    <!--<executions>-->
-    <!--<execution>-->
-    <!--<id>agent-for-ut</id>-->
-    <!--<goals>-->
-    <!--<goal>prepare-agent</goal>-->
-    <!--</goals>-->
-    <!--</execution>-->
-    <!--<execution>-->
-    <!--<id>agent-for-it</id>-->
-    <!--<goals>-->
-    <!--<goal>prepare-agent-integration</goal>-->
-    <!--</goals>-->
-    <!--</execution>-->
-    <!--<execution>-->
-    <!--<id>jacoco-site</id>-->
-    <!--<phase>verify</phase>-->
-    <!--<goals>-->
-    <!--<goal>report</goal>-->
-    <!--</goals>-->
-    <!--</execution>-->
-    <!--</executions>-->
-    <!--</plugin>-->
-    <!--</plugins>-->
-    <!--</build>-->
-    <!--</profile>-->
-
   </profiles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -230,91 +120,27 @@
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <dependencyManagement>
     <dependencies>
-
-      <!-- INTERNAL MODULES -->
-      <!--<dependency>-->
-      <!--<groupId>com.thorpora</groupId>-->
-      <!--<artifactId>module-core</artifactId>-->
-      <!--<version>${project.version}</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-      <!--<groupId>com.thorpora</groupId>-->
-      <!--<artifactId>module-core-test</artifactId>-->
-      <!--<version>${project.version}</version>-->
-      <!--<scope>test</scope>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-      <!--<groupId>com.thorpora</groupId>-->
-      <!--<artifactId>module-mail</artifactId>-->
-      <!--<version>${project.version}</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-      <!--<groupId>com.thorpora</groupId>-->
-      <!--<artifactId>module-todo</artifactId>-->
-      <!--<version>${project.version}</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-      <!--<groupId>com.thorpora</groupId>-->
-      <!--<artifactId>module-user</artifactId>-->
-      <!--<version>${project.version}</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-      <!--<groupId>com.thorpora</groupId>-->
-      <!--<artifactId>test-source</artifactId>-->
-      <!--<version>${project.version}</version>-->
-      <!--</dependency>-->
-
-      <!-- SPRING  -->
-      <dependency>
-        <groupId>org.springframework.data</groupId>
-        <artifactId>spring-data-rest-webmvc</artifactId>
-        <version>${spring-data-rest-webmvc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-web</artifactId>
-        <version>${spring-security.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-core</artifactId>
-        <version>${spring-security.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jdbc</artifactId>
-        <version>${spring-jdbc.version}</version>
-      </dependency>
-
       <!-- UTILS -->
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
       </dependency>
-
       <!-- DATABASE -->
-      <!-- manage datasource configuration -->
-      <dependency>
-        <groupId>commons-dbcp</groupId>
-        <artifactId>commons-dbcp</artifactId>
-        <version>1.4</version>
-      </dependency>
-      <!-- postgresql database drivers -->
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <version>${postgresql.version}</version>
       </dependency>
-
       <!-- embedded database drivers -->
-      <!--<dependency>
+      <!--
+      <dependency>
           <groupId>com.h2database</groupId>
           <artifactId>h2</artifactId>
           <version>${h2db.version}</version>
           <scope>runtime</scope>
-      </dependency>-->
-
+      </dependency>
+      -->
     </dependencies>
   </dependencyManagement>
 
@@ -365,12 +191,7 @@
       <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
       <!-- COMPILATION CONFIGURATION -->
       <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-      <!--
-        maven-compiler-plugin: no need as we target java 8
 
-        [*]: compile
-
-      -->
 
       <plugins>
         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -474,9 +295,6 @@
       </plugins>
     </pluginManagement>
 
-
-
-
       <!--<plugin>-->
       <!--<groupId>org.jacoco</groupId>-->
       <!--<artifactId>jacoco-maven-plugin</artifactId>-->
@@ -493,10 +311,8 @@
       <!--<propertyName>surefireArgLine</propertyName>-->
       <!--</configuration>-->
       <!--</execution>-->
-
       <!--</executions>-->
       <!--</plugin>-->
-
 
   </build>
 

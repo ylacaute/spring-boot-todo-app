@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
+ * FIXME AnsiOutput/AnsiStyle/AnsiColor of Spring
  * Note : don't worry about all '+', compiler optimize it.
  */
 public class LogColorUtils {

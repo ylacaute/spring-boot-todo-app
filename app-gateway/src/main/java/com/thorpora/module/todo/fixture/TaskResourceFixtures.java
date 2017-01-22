@@ -17,7 +17,6 @@
 package com.thorpora.module.todo.fixture;
 
 import com.thorpora.module.todo.TaskResource;
-import com.thorpora.module.todo.web.TaskController;
 
 import java.util.List;
 import java.util.UUID;

@@ -17,22 +17,18 @@
 package com.thorpora.gateway.core.db;
 
 
+import com.thorpora.gateway.core.log.LogColorUtils;
 import com.thorpora.module.mail.core.MailService;
 import com.thorpora.module.mail.fixture.MailFixtures;
 import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.fixture.TodoFixtures;
 import com.thorpora.module.todo.service.TaskService;
 import com.thorpora.module.todo.service.TodoService;
-import com.thorpora.module.user.domain.User;
-import com.thorpora.module.user.fixture.UserResourceFixtures;
 import com.thorpora.module.user.service.UserService;
-import com.thorpora.module.user.web.UserResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-
-import java.util.List;
 
 public class DBPopulator {
 
@@ -58,38 +54,18 @@ public class DBPopulator {
         populate();
     }
 
-    //@Value("${populate.com.thorpora.user.count}")
-    private int userPopulateCount;
-
     public void populate() {
-        logger.info("Populate DB");
-        logger.info("Number of users to populate (from properties) : {}", userPopulateCount);
-
-        //List<UserResource> users = UserResourceFixtures.generate(4);
-
-        //userService.save(users);
+        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Populate DB");
         mailService.save(MailFixtures.create());
         /*
         mailService.save(MailFixtures.builder()
                 .addParameter("user", users.get(0))
                 .build());
-*/
+        */
         //taskService.save(TaskFixtures.create());
-
         Todo todo = TodoFixtures.builder().tasks(3).build();
         todoService.save(todo);
-
         logger.info("DB populated");
-
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
-        System.out.println("********************* DB POPULATOR *************************");
     }
 
 }

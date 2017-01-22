@@ -26,25 +26,8 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID>, UserRepositoryCustom {
 
-
     Optional<User> findOneByEmail(String email);
 
     Optional<User> findOneByLogin(String login);
-
-
-    /*
-
-    Optional<User> findOneByActivationKey(String activationKey);
-
-    List<User> findAllByActivatedIsFalseAndCreatedDateBefore(ZonedDateTime dateTime);
-
-    Optional<User> findOneByResetKey(String resetKey);
-
-
-    @Query(value = "select distinct com.thorpora.user from User com.thorpora.user left join fetch com.thorpora.user.authorities",
-            countQuery = "select count(com.thorpora.user) from User com.thorpora.user")
-    Page<User> findAllWithAuthorities(Pageable pageable);
-
-    */
 
 }

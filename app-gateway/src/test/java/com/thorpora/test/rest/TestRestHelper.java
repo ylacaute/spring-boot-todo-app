@@ -19,7 +19,6 @@ package com.thorpora.test.rest;
 import com.thorpora.module.core.domain.AbstractEntity;
 import com.thorpora.module.core.error.ErrorDTO;
 import com.thorpora.module.core.web.RestResource;
-import com.thorpora.test.rest.*;
 import org.assertj.core.api.Assertions;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;

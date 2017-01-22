@@ -56,13 +56,6 @@ public class FailSafeLoggerListener extends RunListener {
      * @param description describes the tests to be run
      */
     public void testRunStarted(Description description) throws Exception {
-        System.out.println("****************************");
-        System.out.println("****************************");
-        System.out.println("****************************");
-        System.out.println("****************************");
-        System.out.println("****************************");
-
-
     }
 
     /**

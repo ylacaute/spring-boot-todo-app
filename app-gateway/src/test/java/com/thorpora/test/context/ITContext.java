@@ -42,15 +42,10 @@ import javax.sql.DataSource;
 @Configuration
 @EnableConfigurationProperties
 @EnableAutoConfiguration
-        /*(exclude = {
-        DataSourceAutoConfiguration.class
-})*/
 @EntityScan(basePackages = "com.thorpora.module")
 @EnableJpaRepositories(basePackages = "com.thorpora.module")
-//@ComponentScan("")
 @ComponentScan(basePackageClasses = CoreConfig.class)
 @Import({
-        //DBConfig.class,
         UserConfig.class,
         MailConfig.class,
         TodoConfig.class

@@ -19,7 +19,6 @@ package com.thorpora.module.mail.config;
 
 import com.thorpora.module.mail.core.MailProperties;
 import com.thorpora.module.mail.core.MailService;
-import com.thorpora.module.mail.core.StartupMailChecker;
 import org.apache.commons.lang3.CharEncoding;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -51,9 +50,9 @@ public class MailConfig {
         return emailTemplateResolver;
     }
 
-    //@Bean
-    //@Profile(ApplicationProfiles.DEBUG)
-    //public StartupMailChecker startupMailChecker() {
+//    @Bean
+//    @Profile(ApplicationProfiles.DEBUG)
+//    public StartupMailChecker startupMailChecker() {
 //        return new StartupMailChecker();
 //    }
 

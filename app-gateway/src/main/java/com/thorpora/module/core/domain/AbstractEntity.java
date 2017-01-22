@@ -25,15 +25,13 @@ import java.util.UUID;
 public class AbstractEntity implements Serializable {
 
     @Id
-    //@GenericGenerator(name = "uuid", strategy = "uuid2")
-    //@GeneratedValue(generator = "uuid")
     private UUID id = UUID.randomUUID();
 
     public UUID getId() {
         return id;
     }
 
-    // todo : remove ?
+    // TODO : remove
     public void setId(UUID id) {
         this.id = id;
     }

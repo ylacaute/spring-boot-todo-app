@@ -16,7 +16,6 @@
  */
 package com.thorpora.module.user.fixture;
 
-import com.thorpora.module.todo.TaskResource;
 import com.thorpora.module.user.web.UserResource;
 
 import java.time.ZonedDateTime;

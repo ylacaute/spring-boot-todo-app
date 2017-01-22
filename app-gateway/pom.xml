@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>app-gateway</artifactId>
+    <name>Todo App Gateway</name>
 
     <properties>
         <!-- GENERAL -->
@@ -64,8 +65,9 @@
         <!--<sonar.failsafe-reports>target/failsafe-reports</sonar.failsafe-reports>-->
         <!--<sonar.junit.reportsPath>target/junit-rep</sonar.junit.reportsPath>-->
 
-
+        <sonar-maven-plugin.version>3.0.2</sonar-maven-plugin.version>
         <jacoco.version>0.7.8</jacoco.version>
+        <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
         <sonar.language>java</sonar.language>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
@@ -74,99 +76,30 @@
 
     </properties>
 
-    <profiles>
-        <!--<profile>-->
-            <!--<id>coverage</id>-->
-            <!--<activation>-->
-                <!--<property>-->
-                    <!--<name>coverage</name>-->
-                <!--</property>-->
-            <!--</activation>-->
-            <!--<build>-->
-                <!--<plugins>-->
-                    <!--<plugin>-->
-                        <!--<groupId>org.jacoco</groupId>-->
-                        <!--<artifactId>jacoco-maven-plugin</artifactId>-->
-                        <!--<configuration>-->
-                            <!--<includes>my.root.package.*</includes>-->
-                            <!--<destFile>${sonar.jacoco.reportPath}</destFile>-->
-                            <!--<dataFile>${sonar.jacoco.reportPath}</dataFile>-->
-                        <!--</configuration>-->
-                        <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<id>pre-junit-test</id>-->
-                                <!--<goals>-->
-                                    <!--<goal>prepare-agent</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
-                            <!--<execution>-->
-                                <!--<id>post-test</id>-->
-                                <!--<goals>-->
-                                    <!--<goal>report</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
-                        <!--</executions>-->
-                    <!--</plugin>-->
-                <!--</plugins>-->
-            <!--</build>-->
-        <!--</profile>-->
-
-    </profiles>
-
-
     <dependencies>
-
         <dependency>
             <groupId>org.codehaus.sonar-plugins.java</groupId>
             <artifactId>sonar-jacoco-listeners</artifactId>
             <version>3.2</version>
         </dependency>
-
-
-
-        <!-- INTERNAL MODULES -->
-        <!--<dependency>-->
-            <!--<groupId>com.thorpora</groupId>-->
-            <!--<artifactId>module-core</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>com.thorpora</groupId>-->
-            <!--<artifactId>module-mail</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>com.thorpora</groupId>-->
-            <!--<artifactId>module-user</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>com.thorpora</groupId>-->
-            <!--<artifactId>module-todo</artifactId>-->
-        <!--</dependency>-->
-
-        <!-- Needed to parse ZonedDateTime env -->
-        <dependency>
+        <dependency> <!-- Needed to parse ZonedDateTime -->
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.8.6</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-
-        <!-- DATABASE : PostgreSQL driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -175,27 +108,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-
-
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-surefire-plugin</artifactId>-->
-            <!--<configuration>-->
-            <!--<parallel>methods</parallel>-->
-            <!--<threadCount>4</threadCount>-->
-            <!--<argLine>-Xmx1G -XX:MaxPermSize=512m -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled </argLine>&lt;!&ndash;${jacoco.agent.ut.arg}&ndash;&gt;-->
-            <!--<excludes>-->
-            <!--<exclude>**/*IntegrationTest*</exclude>-->
-            <!--</excludes>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
+                    <!--<parallel>methods</parallel>-->
+                    <!--<threadCount>4</threadCount>-->
                     <!--<argLine>${surefireArgLine}</argLine>-->
                     <includes>
                         <include>**/*Test</include>
@@ -209,15 +128,10 @@
                     <!--</property>-->
                 </configuration>
             </plugin>
-
-
-
-
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
                 <!--<artifactId>maven-failsafe-plugin</artifactId>-->
             <!--</plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -232,7 +146,6 @@
                 </executions>
                 <configuration>
                     <!--<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>-->
-                    <!-- Real integration tests with a server started on a random port -->
                     <groups>${it.categories}</groups>
                     <includes>
                         <include>**/*IT.java</include> <!-- Default: **/IT*.java, **/*IT.java, **/*ITCase.java -->
@@ -252,15 +165,13 @@
                     </properties>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-
                 <configuration>
                     <append>true</append>
+                    <outputEncoding>UTF-8</outputEncoding>
                 </configuration>
-
                 <executions>
                     <execution>
                         <id>agent-for-ut</id>
@@ -282,6 +193,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin.version}</version>
             </plugin>
 
             <!--<plugin>-->

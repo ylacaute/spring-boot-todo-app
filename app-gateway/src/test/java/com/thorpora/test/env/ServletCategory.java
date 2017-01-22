@@ -16,5 +16,5 @@
  */
 package com.thorpora.test.env;
 
-public class ServletCategory {
+public interface ServletCategory {
 }

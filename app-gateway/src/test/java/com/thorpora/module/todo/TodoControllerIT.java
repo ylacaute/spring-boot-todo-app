@@ -2,15 +2,17 @@ package com.thorpora.module.todo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thorpora.gateway.core.db.DBCleaner;
+import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.fixture.TaskResourceFixtures;
 import com.thorpora.module.todo.fixture.TodoResourceFixtures;
-import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.repository.TodoRepository;
 import com.thorpora.module.todo.web.TodoController;
 import com.thorpora.test.env.AbstractServletEnvIT;
 import com.thorpora.test.junit.TestDecorator;
 import com.thorpora.test.rest.*;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -23,7 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Convention name test: resource_action_expectedBehavior

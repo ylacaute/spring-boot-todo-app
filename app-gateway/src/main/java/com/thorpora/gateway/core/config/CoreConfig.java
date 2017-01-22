@@ -50,20 +50,4 @@ public class CoreConfig {
         return new StartupListener();
     }
 
-    /*
-    @Bean
-    public JpaRepositoryFactoryBean userRepository() {
-        JpaRepositoryFactoryBean factory = new JpaRepositoryFactoryBean();
-        factory.setRepositoryInterface(UserJPARepository.class);
-        return factory;
-    }*/
-
-    /*
-    @Order(1)
-    @Bean
-    public ReflectionsPersistenceUnitPostProcessor reflectionsPersistenceUnitPostProcessor() {
-        return new ReflectionsPersistenceUnitPostProcessor();
-    }*/
-
-
 }

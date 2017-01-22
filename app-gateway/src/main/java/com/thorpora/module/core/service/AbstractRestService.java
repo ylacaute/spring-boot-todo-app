@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+// FIXME Use composition, not inheritance (?)
 public abstract class AbstractRestService<Entity extends AbstractEntity> {
 
     public abstract Entity getOne(UUID id);

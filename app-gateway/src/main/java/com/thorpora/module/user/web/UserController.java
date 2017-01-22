@@ -18,16 +18,13 @@ package com.thorpora.module.user.web;
 
 import com.thorpora.module.core.web.AbstractRestController;
 import com.thorpora.module.user.domain.User;
-import com.thorpora.module.user.fixture.UserResourceFixtures;
 import com.thorpora.module.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 public class UserController extends AbstractRestController<UserResource, User> {
