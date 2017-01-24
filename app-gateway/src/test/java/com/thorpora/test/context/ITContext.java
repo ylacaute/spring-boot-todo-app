@@ -15,9 +15,12 @@ package com.thorpora.test.context; /**
  * limitations under the License.
  */
 
+import com.thorpora.gateway.core.AppProfiles;
 import com.thorpora.gateway.core.config.CoreConfig;
-import com.thorpora.gateway.core.db.DBCleaner;
 import com.thorpora.gateway.core.log.LogColorUtils;
+import com.thorpora.module.core.db.cleaner.DBCleaner;
+import com.thorpora.module.core.db.cleaner.H2Cleaner;
+import com.thorpora.module.core.db.cleaner.PostgresCleaner;
 import com.thorpora.module.mail.config.MailConfig;
 import com.thorpora.module.todo.config.TodoConfig;
 import com.thorpora.module.user.config.UserConfig;
@@ -26,18 +29,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.TestPropertySource;
-
-import javax.sql.DataSource;
-
-/**
- * Any specific bean to integration test can be defined here?
- */
 
 @Configuration
 @EnableConfigurationProperties
@@ -53,14 +47,24 @@ import javax.sql.DataSource;
 @TestPropertySource(locations="classpath:application-test.properties")
 public class ITContext {
 
-    @Bean
-    public DBCleaner dbCleaner(DataSource dataSource) {
-        return new DBCleaner();
-    }
-
     private final static Logger log = LoggerFactory.getLogger(ITContext.class);
 
     public ITContext() {
         LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Using ITContext configuration");
+    }
+
+
+    @Profile(AppProfiles.DB_H2_MEM)
+    @Bean
+    public DBCleaner h2Cleaner() {
+        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "H2 Cleaner");
+        return new H2Cleaner();
+    }
+
+    @Profile(AppProfiles.DB_POSTGRESQL)
+    @Bean
+    public DBCleaner postgresCleaner() {
+        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Postgres Cleaner");
+        return new PostgresCleaner();
     }
 }

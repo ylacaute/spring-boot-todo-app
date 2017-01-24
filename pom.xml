@@ -139,14 +139,14 @@
         <version>${postgresql.version}</version>
       </dependency>
       <!-- embedded database drivers -->
-      <!--
+
       <dependency>
           <groupId>com.h2database</groupId>
           <artifactId>h2</artifactId>
           <version>${h2db.version}</version>
           <scope>runtime</scope>
       </dependency>
-      -->
+
     </dependencies>
   </dependencyManagement>
 

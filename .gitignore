@@ -111,13 +111,6 @@ fabric.properties
 .idea
 assets
 *~
-app/gateway/target
-module/module-core-test/target
+app-gateway/target
+app-gateway/app-gateway.iml
 sbtest/target
-module/module-user/target
-module/module-todo/target
-module/module-sample-async/target
-module/module-mail/target
-module/module-mail/target
-module/module-core/target
-module/module-core/target

@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * As we want a clean API (100% JSON) we defined this web mapped on the
+ * As we want a cleanTables API (100% JSON) we defined this web mapped on the
  * servlet error path. Note that if this error mapping is not set, Spring instantiate
  * {@link BasicErrorController} by default which will bring us the ugly
  * whileLabel html page.

@@ -28,9 +28,8 @@ public class AppProfiles {
     public static final String PRODUCTION  = "production";
 
     public static final String DB_POPULATE = "populate";
-    public static final String DB_EMBEDDED = "embeddedDataSource";
-    public static final String DB_DOCKER = "dockerDataSource";
-    public static final String DB_POSTGRESQL = "postgreSQLDataSource";
+    public static final String DB_H2_MEM = "h2mem";
+    public static final String DB_POSTGRESQL = "postgres";
 
     public static final String DEBUG = "debug";
 
@@ -45,11 +44,11 @@ public class AppProfiles {
 
         switch (profile) {
             case DEV :
-                return new String[]{DB_EMBEDDED, DB_POPULATE};
+                return new String[]{DB_H2_MEM, DB_POPULATE};
             case TEST :
-                return new String[]{DB_EMBEDDED, DB_POPULATE};
+                return new String[]{DB_H2_MEM, DB_POPULATE};
             case INTEGRATION :
-                return new String[]{DB_EMBEDDED, DB_POPULATE};
+                return new String[]{DB_H2_MEM, DB_POPULATE};
             case PRODUCTION :
                 return new String[]{};
         }

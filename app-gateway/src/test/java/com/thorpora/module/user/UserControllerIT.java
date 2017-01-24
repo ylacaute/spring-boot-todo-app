@@ -1,7 +1,7 @@
 package com.thorpora.module.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thorpora.gateway.core.db.DBCleaner;
+import com.thorpora.module.core.db.cleaner.DBCleaner;
 import com.thorpora.module.user.domain.User;
 import com.thorpora.module.user.fixture.UserResourceFixtures;
 import com.thorpora.module.user.repository.UserRepository;
@@ -66,7 +66,7 @@ public class UserControllerIT extends AbstractServletEnvIT {
 
     @Before
     public void beforeTest() {
-        dbCleaner.clear("users");
+        dbCleaner.clean("users");
     }
 
     @Test

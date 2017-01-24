@@ -55,7 +55,6 @@ public class DBPopulator {
     }
 
     public void populate() {
-        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Populate DB");
         mailService.save(MailFixtures.create());
         /*
         mailService.save(MailFixtures.builder()

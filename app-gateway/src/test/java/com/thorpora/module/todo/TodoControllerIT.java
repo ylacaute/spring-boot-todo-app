@@ -1,7 +1,7 @@
 package com.thorpora.module.todo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thorpora.gateway.core.db.DBCleaner;
+import com.thorpora.module.core.db.cleaner.DBCleaner;
 import com.thorpora.module.todo.domain.Todo;
 import com.thorpora.module.todo.fixture.TaskResourceFixtures;
 import com.thorpora.module.todo.fixture.TodoResourceFixtures;
@@ -69,7 +69,7 @@ public class TodoControllerIT extends AbstractServletEnvIT {
 
     @Before
     public void beforeTest() {
-        dbCleaner.clear("todo", "task");
+        dbCleaner.clean("todo", "task");
     }
 
     @Test

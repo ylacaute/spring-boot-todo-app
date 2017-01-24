@@ -16,6 +16,7 @@
  */
 package com.thorpora.gateway.core.db;
 
+import com.thorpora.gateway.core.log.LogColorUtils;
 import com.thorpora.module.mail.core.MailService;
 import com.thorpora.module.todo.service.TaskService;
 import com.thorpora.module.todo.service.TodoService;
@@ -31,27 +32,7 @@ public class DBConfig {
                                    MailService mailService,
                                    TodoService todoService,
                                    TaskService taskService) {
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
-        System.out.println("------------------------- DB POPULATOR ---------------------------");
+        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Populate DB");
         return new DBPopulator(userService, mailService, todoService, taskService);
     }
 

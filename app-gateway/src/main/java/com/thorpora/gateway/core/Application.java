@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -41,7 +42,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  *
  */
 @EnableConfigurationProperties
-@EnableAutoConfiguration
+@EnableAutoConfiguration/*(exclude = {
+        DataSourceAutoConfiguration.class
+})*/
 @EntityScan(basePackages = "com.thorpora.module")
 @EnableJpaRepositories(basePackages = "com.thorpora.module")
 @ComponentScan(basePackageClasses = CoreConfig.class)
