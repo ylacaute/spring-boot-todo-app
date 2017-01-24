@@ -50,6 +50,6 @@ public class CoreConfig {
         return new StartupListener();
     }
 
-    // test jenkins hook 25
+    // test jenkins hook 26
 
 }
