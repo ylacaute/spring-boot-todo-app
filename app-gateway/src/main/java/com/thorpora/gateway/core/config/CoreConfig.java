@@ -44,7 +44,7 @@ public class CoreConfig {
         return new VerboseStartupListener();
     }
 
-    @Bean
+    @BeanAA
     @Profile(AppProfiles.PRODUCTION)
     public StartupListener startupListener() {
         return new StartupListener();
