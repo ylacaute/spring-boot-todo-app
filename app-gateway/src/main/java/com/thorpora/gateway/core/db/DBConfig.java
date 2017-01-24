@@ -16,23 +16,29 @@
  */
 package com.thorpora.gateway.core.db;
 
-import com.thorpora.gateway.core.log.LogColorUtils;
+import com.thorpora.module.core.log.ColoredStatus;
 import com.thorpora.module.mail.core.MailService;
 import com.thorpora.module.todo.service.TaskService;
 import com.thorpora.module.todo.service.TodoService;
 import com.thorpora.module.user.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.thorpora.module.core.log.ColoredStatus.Status.INIT;
+
 @Configuration
 public class DBConfig {
+
+    private final static Logger log = LoggerFactory.getLogger(DBConfig.class);
 
     @Bean
     public DBPopulator dbPopulator(UserService userService,
                                    MailService mailService,
                                    TodoService todoService,
                                    TaskService taskService) {
-        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Populate DB");
+        log.info(ColoredStatus.getText(INIT, "Populate DB"));
         return new DBPopulator(userService, mailService, todoService, taskService);
     }
 

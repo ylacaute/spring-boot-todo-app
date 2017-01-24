@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  * all {@link Exception} and {@Exception} are managed in {@link ErrorController}.
  * <p>
  * As the ErrorController is also defined with @ControllerAdvice and manage alk cases, we set this bean
- * with order{1} to get the priority.
+ * with order{1} to getText the priority.
  */
 @RestController
 @ControllerAdvice

@@ -50,9 +50,9 @@ public class StartupLoadusers {
 
         // Print results, including elapsed time
 //        logger.info("Elapsed time: " + (System.currentTimeMillis() - start));
-//        logger.info("--> " + page1.get());
-//        logger.info("--> " + page2.get());
-//        logger.info("--> " + page3.get());
+//        logger.info("--> " + page1.getText());
+//        logger.info("--> " + page2.getText());
+//        logger.info("--> " + page3.getText());
 
 
     }

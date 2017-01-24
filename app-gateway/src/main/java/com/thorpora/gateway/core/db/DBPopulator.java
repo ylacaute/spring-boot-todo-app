@@ -17,7 +17,6 @@
 package com.thorpora.gateway.core.db;
 
 
-import com.thorpora.gateway.core.log.LogColorUtils;
 import com.thorpora.module.mail.core.MailService;
 import com.thorpora.module.mail.fixture.MailFixtures;
 import com.thorpora.module.todo.domain.Todo;
@@ -58,7 +57,7 @@ public class DBPopulator {
         mailService.save(MailFixtures.create());
         /*
         mailService.save(MailFixtures.builder()
-                .addParameter("user", users.get(0))
+                .addParameter("user", users.getText(0))
                 .build());
         */
         //taskService.save(TaskFixtures.create());

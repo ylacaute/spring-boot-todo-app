@@ -16,8 +16,8 @@
  */
 package com.thorpora.test.junit;
 
-import com.thorpora.gateway.core.log.LogColorUtils;
-import com.thorpora.gateway.core.log.LogColorUtils.Status;
+import com.thorpora.module.core.log.ColoredStatus;
+import com.thorpora.module.core.log.ColoredStatus.Status;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.slf4j.Logger;
@@ -40,7 +40,7 @@ public class TestDecorator extends TestWatcher {
     protected void printTestStatus(Status status, Description desc, boolean testFail) {
         String className = desc.getClassName()
                 .substring(desc.getClassName().lastIndexOf(".") + 1) + ")";
-        LogColorUtils.logStatus(status, desc.getMethodName(), className);
+        log.info(ColoredStatus.getText(status, desc.getMethodName(), className));
     }
 
 }

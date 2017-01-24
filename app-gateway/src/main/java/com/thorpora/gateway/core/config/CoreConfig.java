@@ -22,6 +22,9 @@ import com.thorpora.gateway.core.listener.StartupListener;
 import com.thorpora.gateway.core.listener.VerboseStartupListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ansi.AnsiOutput;
+import org.springframework.boot.ansi.AnsiOutput.Enabled;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,7 +52,5 @@ public class CoreConfig {
     public StartupListener startupListener() {
         return new StartupListener();
     }
-
-    // test jenkins hook 30
 
 }

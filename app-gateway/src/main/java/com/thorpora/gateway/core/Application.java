@@ -24,6 +24,7 @@ import com.thorpora.module.todo.config.TodoConfig;
 import com.thorpora.module.user.config.UserConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.ansi.AnsiOutput;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -58,6 +59,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class Application {
 
     private final static Logger logger = LoggerFactory.getLogger(Application.class);
+
+    static {
+        AnsiOutput.setConsoleAvailable(true);
+    }
 
     public static void main(String[] args) {
 

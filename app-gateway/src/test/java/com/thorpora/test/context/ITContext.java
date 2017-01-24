@@ -17,7 +17,7 @@ package com.thorpora.test.context; /**
 
 import com.thorpora.gateway.core.AppProfiles;
 import com.thorpora.gateway.core.config.CoreConfig;
-import com.thorpora.gateway.core.log.LogColorUtils;
+import com.thorpora.module.core.log.ColoredStatus;
 import com.thorpora.module.core.db.cleaner.DBCleaner;
 import com.thorpora.module.core.db.cleaner.H2Cleaner;
 import com.thorpora.module.core.db.cleaner.PostgresCleaner;
@@ -32,6 +32,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.TestPropertySource;
+
+import static com.thorpora.module.core.log.ColoredStatus.Status.INIT;
 
 @Configuration
 @EnableConfigurationProperties
@@ -50,21 +52,21 @@ public class ITContext {
     private final static Logger log = LoggerFactory.getLogger(ITContext.class);
 
     public ITContext() {
-        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Using ITContext configuration");
+        ColoredStatus.getText(INIT, "Using ITContext configuration");
     }
 
 
     @Profile(AppProfiles.DB_H2_MEM)
     @Bean
     public DBCleaner h2Cleaner() {
-        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "H2 Cleaner");
+        log.info(ColoredStatus.getText(INIT, "H2 Cleaner"));
         return new H2Cleaner();
     }
 
     @Profile(AppProfiles.DB_POSTGRESQL)
     @Bean
     public DBCleaner postgresCleaner() {
-        LogColorUtils.logStatus(LogColorUtils.Status.INIT, "Postgres Cleaner");
+        log.info(ColoredStatus.getText(INIT, "Postgres Cleaner"));
         return new PostgresCleaner();
     }
 }
