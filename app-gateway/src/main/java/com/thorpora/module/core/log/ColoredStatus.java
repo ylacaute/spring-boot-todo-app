@@ -48,7 +48,6 @@ public class ColoredStatus {
     }
 
     static {
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>><< "  +  Boolean.valueOf(System.getProperty(DISABLE_ANSI)));
         AnsiOutput.setConsoleAvailable(
                 !Boolean.valueOf(System.getProperty(DISABLE_ANSI)));
     }
