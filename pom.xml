@@ -46,13 +46,19 @@
   <!-- PROPERTIES CONFIGURATION -->
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <properties>
-    <!-- GENERAL -->
-    <!--<main.basedir>${basedir}</main.basedir>-->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+
+    <!-- MAVEN PLUGINS -->
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     <maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
+    <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+    <spring-boot-maven-plugin.version>1.4.3.RELEASE</spring-boot-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
+    <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
+
+    <!-- GENERAL -->
+    <java.version>1.8</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- CORE -->
     <javax.inject.version>1</javax.inject.version>
@@ -60,8 +66,12 @@
     <!-- SPRING -->
     <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
 
+    <!-- SECURITY -->
+    <jjwt.version>0.7.0</jjwt.version>
+
     <!-- UTILS -->
     <commons-lang3.version>3.4</commons-lang3.version>
+    <jackson-datatype-jsr310.version>2.8.6</jackson-datatype-jsr310.version>
 
     <!-- DATABASE -->
     <postgresql.version>9.4-1201-jdbc41</postgresql.version>
@@ -69,8 +79,7 @@
 
     <!-- SONAR CONFIGURATION -->
     <!-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true -->
-    <!--<jacoco.version>0.7.8</jacoco.version>-->
-    <!--<sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>-->
+
     <!--<sonar.dryRun.readTimeout>60</sonar.dryRun.readTimeout>-->
     <!--<sonar.preview.readTimeout>60</sonar.preview.readTimeout>-->
     <!--<sonar.language>java</sonar.language>-->
@@ -99,24 +108,39 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
+        <filter>default</filter>
         <skipITs>true</skipITs>
+        <it.category>
+          com.thorpora.test.env.MockedServletCategory,
+          com.thorpora.test.env.ServletCategory
+        </it.category>
       </properties>
     </profile>
     <!-- Integration profile : only IT on mocked server -->
     <profile>
       <id>int</id>
       <properties>
+        <filter>default</filter>
         <it.categories>com.thorpora.test.env.MockedServletCategory</it.categories>
       </properties>
     </profile>
-    <!-- Production profile : all IT -->
+    <!-- Continuous Integration profile : all IT -->
     <profile>
-      <id>prod</id>
+      <id>ci</id>
       <properties>
+        <filter>ci</filter>
         <it.category>
           com.thorpora.test.env.MockedServletCategory,
           com.thorpora.test.env.ServletCategory
         </it.category>
+      </properties>
+    </profile>
+    <!-- PRODUCTION PROFILE-->
+    <profile>
+      <id>prod</id>
+      <properties>
+        <filter>default</filter>
+        <skipITs>true</skipITs>
       </properties>
     </profile>
   </profiles>
@@ -132,19 +156,24 @@
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
       </dependency>
-      <!-- DATABASE -->
+      <!-- DATABASE: Postgres -->
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <version>${postgresql.version}</version>
       </dependency>
-      <!-- embedded database drivers -->
-
+      <!-- DATABASE: H2 embedded -->
       <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>${h2db.version}</version>
-          <scope>runtime</scope>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${h2db.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+      <!-- UTILS: parse ZonedDateTime for Jackson -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>${jackson-datatype-jsr310.version}</version>
       </dependency>
 
     </dependencies>
@@ -170,6 +199,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
+    <!-- Spring security -->
+    <!--<dependency>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-starter-security</artifactId>-->
+    <!--</dependency>-->
     <!-- Mail tools -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -186,6 +220,13 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <!-- Security : JWT -->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>${jjwt.version}</version>
+    </dependency>
+
   </dependencies>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~ -->
@@ -287,38 +328,54 @@
         <!--</executions>-->
         <!--</plugin>-->
 
-        <!--<plugin>-->
-        <!--<groupId>org.codehaus.mojo</groupId>-->
-        <!--<artifactId>sonar-maven-plugin</artifactId>-->
-        <!--<version>${sonar-maven-plugin.version}</version>-->
-        <!--</plugin>-->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>${sonar-maven-plugin.version}</version>
+        </plugin>
+
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${jacoco.version}</version>
         </plugin>
 
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot-maven-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+
       </plugins>
     </pluginManagement>
 
-      <!--<plugin>-->
-      <!--<groupId>org.jacoco</groupId>-->
-      <!--<artifactId>jacoco-maven-plugin</artifactId>-->
-      <!--<executions>-->
-      <!--<execution>-->
-      <!--<id>pre-unit-test</id>-->
-      <!--<goals>-->
-      <!--<goal>prepare-agent</goal>-->
-      <!--</goals>-->
-      <!--<configuration>-->
-      <!--<destFile>-->
-      <!--${sonar.jacoco.utReportPath}-->
-      <!--</destFile>-->
-      <!--<propertyName>surefireArgLine</propertyName>-->
-      <!--</configuration>-->
-      <!--</execution>-->
-      <!--</executions>-->
-      <!--</plugin>-->
+    <!--<plugin>-->
+    <!--<groupId>org.jacoco</groupId>-->
+    <!--<artifactId>jacoco-maven-plugin</artifactId>-->
+    <!--<executions>-->
+    <!--<execution>-->
+    <!--<id>pre-unit-test</id>-->
+    <!--<goals>-->
+    <!--<goal>prepare-agent</goal>-->
+    <!--</goals>-->
+    <!--<configuration>-->
+    <!--<destFile>-->
+    <!--${sonar.jacoco.utReportPath}-->
+    <!--</destFile>-->
+    <!--<propertyName>surefireArgLine</propertyName>-->
+    <!--</configuration>-->
+    <!--</execution>-->
+    <!--</executions>-->
+    <!--</plugin>-->
 
   </build>
 

@@ -19,6 +19,7 @@ package com.thorpora.gateway.core;
 
 import com.thorpora.gateway.core.config.CoreConfig;
 import com.thorpora.gateway.core.db.DBConfig;
+import com.thorpora.gateway.core.initializer.ProfileInitializer;
 import com.thorpora.module.mail.config.MailConfig;
 import com.thorpora.module.todo.config.TodoConfig;
 import com.thorpora.module.user.config.UserConfig;
@@ -28,6 +29,7 @@ import org.springframework.boot.ansi.AnsiOutput;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -43,9 +45,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  *
  */
 @EnableConfigurationProperties
-@EnableAutoConfiguration/*(exclude = {
-        DataSourceAutoConfiguration.class
-})*/
+@EnableAutoConfiguration(exclude = {
+        //DataSourceAutoConfiguration.class
+        SecurityAutoConfiguration.class
+})
 @EntityScan(basePackages = "com.thorpora.module")
 @EnableJpaRepositories(basePackages = "com.thorpora.module")
 @ComponentScan(basePackageClasses = CoreConfig.class)
@@ -60,10 +63,6 @@ public class Application {
 
     private final static Logger logger = LoggerFactory.getLogger(Application.class);
 
-    static {
-        AnsiOutput.setConsoleAvailable(true);
-    }
-
     public static void main(String[] args) {
 
         new SpringApplicationBuilder()
@@ -72,7 +71,7 @@ public class Application {
                 .logStartupInfo(true)
                 .headless(true)
                 .listeners()
-                .initializers() // new ProfileInitializer()
+                .initializers(new ProfileInitializer())
                 .run(args);
     }
 

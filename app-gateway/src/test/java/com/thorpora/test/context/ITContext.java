@@ -17,6 +17,7 @@ package com.thorpora.test.context; /**
 
 import com.thorpora.gateway.core.AppProfiles;
 import com.thorpora.gateway.core.config.CoreConfig;
+import com.thorpora.gateway.core.initializer.ProfileInitializer;
 import com.thorpora.module.core.log.ColoredStatus;
 import com.thorpora.module.core.db.cleaner.DBCleaner;
 import com.thorpora.module.core.db.cleaner.H2Cleaner;
@@ -31,6 +32,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import static com.thorpora.module.core.log.ColoredStatus.Status.INIT;
@@ -46,8 +48,7 @@ import static com.thorpora.module.core.log.ColoredStatus.Status.INIT;
         MailConfig.class,
         TodoConfig.class
 })
-@TestPropertySource(locations="classpath:application-test.properties")
-public class ITContext {
+    public class ITContext {
 
     private final static Logger log = LoggerFactory.getLogger(ITContext.class);
 

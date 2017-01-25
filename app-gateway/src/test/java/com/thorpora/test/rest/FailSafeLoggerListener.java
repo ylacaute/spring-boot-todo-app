@@ -16,6 +16,7 @@
  */
 package com.thorpora.test.rest;
 
+import com.thorpora.module.core.log.ColoredStatus;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -30,25 +31,32 @@ public class FailSafeLoggerListener extends RunListener {
     private static final String COM_THORPORA = "com.thorpora";
 
 
-    private void logTestStart(String className, String methodName, Object[] parameters) {
+/*    private void logTestStart(String className, String methodName, Object[] parameters) {
         // display tests parameters for mirakl-web only because :
         // 1. Several mirakl-web DataProviders contain hundreds of tests cases
         // 2. Parameters are short and readable in the STDOUT
+
+
         if (className.startsWith(COM_THORPORA)) {
-            logger.info("Running {}.{} with {}", className, methodName, parameters);
+            logger.info(">>Running {}.{} with {}", className, methodName, parameters);
         } else {
-            logger.info("Running {}.{}", className, methodName);
+            logger.info(">>Running {}.{}", className, methodName);
         }
+    }*/
+
+
+    private void logStatus() {
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.SUCCESS, ""));
     }
 
-    private void logTestFailure(String className, String methodName) {
+  /*  private void logTestFailure(String className, String methodName) {
         logger.error("Failure on {}.{}", className, methodName);
     }
 
     private void logTestSkipped(String className, String methodName) {
         logger.error("Skipped Test on {}.{} - This test has to be fixed or removed quickly.", className, methodName);
     }
-
+*/
     /**
      * Called before any tests have been run. This may be called on an
      * arbitrary thread.
@@ -56,6 +64,7 @@ public class FailSafeLoggerListener extends RunListener {
      * @param description describes the tests to be run
      */
     public void testRunStarted(Description description) throws Exception {
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.INIT, "testRunStarted"));
     }
 
     /**
@@ -65,6 +74,7 @@ public class FailSafeLoggerListener extends RunListener {
      * @param result the summary of the test run, including all the tests that failed
      */
     public void testRunFinished(Result result) throws Exception {
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.INIT, "testRunFinished"));
     }
 
     /**
@@ -74,7 +84,7 @@ public class FailSafeLoggerListener extends RunListener {
      * (generally a class and method name)
      */
     public void testStarted(Description description) throws Exception {
-        logTestStart(description.getClassName(), description.getMethodName(), null);
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.INIT, "testStarted"));
     }
 
     /**
@@ -83,6 +93,7 @@ public class FailSafeLoggerListener extends RunListener {
      * @param description the description of the test that just ran
      */
     public void testFinished(Description description) throws Exception {
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.INIT, "testFinished"));
     }
 
     /**
@@ -100,7 +111,7 @@ public class FailSafeLoggerListener extends RunListener {
      * @param failure describes the test that failed and the exception that was thrown
      */
     public void testFailure(Failure failure) throws Exception {
-        logTestFailure(failure.getDescription().getClassName(), failure.getDescription().getMethodName());
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.INIT, "testFailure"));
     }
 
     /**
@@ -120,7 +131,7 @@ public class FailSafeLoggerListener extends RunListener {
      * @param description describes the test that will not be run
      */
     public void testIgnored(Description description) throws Exception {
-        logTestSkipped(description.getClassName(), description.getMethodName());
+        logger.info(ColoredStatus.getText(ColoredStatus.Status.INIT, "testIgnored"));
     }
 
 

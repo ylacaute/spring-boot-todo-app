@@ -55,7 +55,9 @@ public class MailService {
             message.setFrom(mailProperties.getFrom());
             message.setSubject(mail.getSubject());
             message.setText(content, mail.isHtml());
-            javaMailSender.send(mimeMessage);
+            if (mailProperties.isActive()) {
+                javaMailSender.send(mimeMessage);
+            }
         } catch (Exception e) {
             log.warn("Failed to send mail: {}", mail, e);
         }

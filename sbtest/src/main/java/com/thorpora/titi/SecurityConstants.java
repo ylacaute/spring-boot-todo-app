@@ -1,5 +1,5 @@
 /**
- * Created by Yannick Lacaute on 30/12/16.
+ * Created by Yannick Lacaute on 24/01/17.
  * Copyright 2015-2016 the original author or authors.
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,37 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.thorpora.module.mail.core;
+package com.thorpora.titi;
 
-public class MailProperties {
+public class SecurityConstants {
 
-    private boolean active;
-
-    private String from;
-    private String baseUrl;
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
+    public static final String LOGIN_REGEX = "^[_'.@A-Za-z0-9-]*$";
+    public static final int PASSWORD_MIN_LENGTH = 4;
+    public static final int PASSWORD_MAX_LENGTH = 100;
 
 }

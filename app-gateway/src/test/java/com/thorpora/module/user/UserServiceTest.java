@@ -31,8 +31,13 @@ import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Properties;
 import java.util.UUID;
 
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -55,8 +60,10 @@ public class UserServiceTest {
     private MailService mailService;
 
     @Before
-    public void before() {
+    public void before() throws IOException {
         initMocks(this);
+
+
     }
 
     @Test

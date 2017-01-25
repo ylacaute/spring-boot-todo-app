@@ -17,10 +17,12 @@
 package com.thorpora.gateway.core.initializer;
 
 import com.thorpora.gateway.core.AppProfiles;
+import com.thorpora.module.core.exception.ProfileException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -32,15 +34,28 @@ public class ProfileInitializer implements ApplicationContextInitializer<Configu
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
-        /*
         ConfigurableEnvironment env = applicationContext.getEnvironment();
-        Set<String> profiles = getPrimaryProfiles(env.getActiveProfiles());
+        //Set<String> profiles = getPrimaryProfiles(env.getActiveProfiles());
+        String[] activeProfiles = env.getActiveProfiles();
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("ACTIVE PROFILES : " + activeProfiles.length);
+        if (activeProfiles.length > 0) {
+            System.out.println("ACTIVE PROFILES[0] : " + activeProfiles[0]);
+        }
 
-        if (profiles.isEmpty())
-            throw new ProfileException("No primary profile set");
-        if (profiles.size() > 1)
-            throw new ProfileException("There can be only one primary active profile");
 
+
+//        if (profiles.isEmpty())
+//            throw new ProfileException("No primary profile set");
+//        if (profiles.size() > 1)
+//            throw new ProfileException("There can be only one primary active profile");
+
+        /*
         String primaryProfile = profiles.iterator().next();
         String[] dependencies = AppProfiles
                 .dependenciesOf(primaryProfile, env.getActiveProfiles());
@@ -51,6 +66,8 @@ public class ProfileInitializer implements ApplicationContextInitializer<Configu
     }
 
     private Set<String> getPrimaryProfiles(String[] activeProfiles) {
+
+
         return Arrays
                 .stream(activeProfiles)
                 .filter(AppProfiles.PRIMARY_PROFILES::contains)

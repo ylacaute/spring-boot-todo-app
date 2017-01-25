@@ -16,10 +16,12 @@
  */
 package com.thorpora.gateway.core.listener;
 
+import com.thorpora.module.core.exception.ProfileException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 
 import javax.inject.Inject;
@@ -35,6 +37,9 @@ public class StartupListener {
     @EventListener(ContextRefreshedEvent.class)
     public void devContextRefreshedEvent() {
         logger.info("Application ready, actives profiles : {}", Arrays.asList(env.getActiveProfiles()));
+//        if (env.getActiveProfiles().length == 0) {
+//            throw new ProfileException("No profile set");
+//        }
     }
 
 }

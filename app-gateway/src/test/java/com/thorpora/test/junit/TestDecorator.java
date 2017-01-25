@@ -22,12 +22,24 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.ansi.AnsiOutput;
+
+import java.io.FileReader;
+import java.util.Properties;
 
 public class TestDecorator extends TestWatcher {
 
     private final static Logger log = LoggerFactory.getLogger(TestDecorator.class);
 
     private final static String LB = System.getProperty("line.separator");
+
+    private static Boolean forceAnsi;
+
+    public TestDecorator() {
+        if (forceAnsi == null) {
+            initForceAnsi();
+        }
+    }
 
     protected void succeeded(Description description) {
         printTestStatus(Status.SUCCESS, description, false);
@@ -41,6 +53,22 @@ public class TestDecorator extends TestWatcher {
         String className = desc.getClassName()
                 .substring(desc.getClassName().lastIndexOf(".") + 1) + ")";
         log.info(ColoredStatus.getText(status, desc.getMethodName(), className));
+    }
+
+    private void initForceAnsi() {
+        try {
+            Properties p = new Properties();
+            p.load(new FileReader(Thread.currentThread().getContextClassLoader()
+                    .getResource("application.properties").getFile()));
+            forceAnsi = Boolean.valueOf(p.getProperty("logging.force.ansi"));
+            if (forceAnsi) {
+                log.info("forceAnsi option enabled");
+                AnsiOutput.setConsoleAvailable(true);
+            }
+        } catch (Exception e) {
+            forceAnsi = false;
+            log.warn("Exception during TestDecorator configuration", e);
+        }
     }
 
 }

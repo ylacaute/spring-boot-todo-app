@@ -16,21 +16,21 @@
  */
 package com.thorpora.gateway.core.db;
 
-import org.postgresql.util.PSQLException;
 import org.springframework.boot.diagnostics.AbstractFailureAnalyzer;
 import org.springframework.boot.diagnostics.FailureAnalysis;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.sql.SQLException;
 
-public class DBConfigFailureAnalyzer extends AbstractFailureAnalyzer<PSQLException> {
+public class DBConfigFailureAnalyzer extends AbstractFailureAnalyzer<SQLException> {
 
     @Override
-    protected FailureAnalysis analyze(Throwable rootFailure, PSQLException cause) {
+    protected FailureAnalysis analyze(Throwable rootFailure, SQLException cause) {
         return new FailureAnalysis(getDescription(cause), getAction(cause), cause);
     }
 
-    private String getDescription(PSQLException ex) {
+    private String getDescription(SQLException ex) {
         StringWriter description = new StringWriter();
         PrintWriter printer = new PrintWriter(description);
         printer.printf("Impossible to connect to the database.");
@@ -38,7 +38,7 @@ public class DBConfigFailureAnalyzer extends AbstractFailureAnalyzer<PSQLExcepti
         return description.toString();
     }
 
-    private String getAction(PSQLException ex) {
+    private String getAction(SQLException ex) {
         StringWriter action = new StringWriter();
         PrintWriter printer = new PrintWriter(action);
         printer.printf("Please verify you have started your database.");

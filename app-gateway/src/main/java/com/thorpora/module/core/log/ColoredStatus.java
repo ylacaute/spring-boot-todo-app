@@ -27,14 +27,6 @@ public class ColoredStatus {
 
     private final static Logger log = LoggerFactory.getLogger(ColoredStatus.class);
 
-    /**
-     * For unknown reasons, Spring don't detect correctly console capabilities (especially when
-     * colors are used in @Rule Junit) For this reason and because colors are almost always available
-     * we enable it by default. You still can disable color with -DdisableAnsi=false
-     * This option can be used for special env build, Jenkins for example.
-     */
-    private final static String DISABLE_ANSI = "disableAnsi";
-
     public enum Status {
         INIT(AnsiColor.YELLOW),
         SUCCESS(AnsiColor.GREEN),
@@ -47,11 +39,6 @@ public class ColoredStatus {
         }
     }
 
-    static {
-        AnsiOutput.setConsoleAvailable(
-                !Boolean.valueOf(System.getProperty(DISABLE_ANSI)));
-    }
-
     public static String getText(Status status, String primaryText) {
         return getText(status, primaryText, null);
     }
@@ -62,8 +49,8 @@ public class ColoredStatus {
                 + " "
                 + primaryText
                 + " "
-                + (secondaryText != null ? "(" + secondaryText + ")" : "")
-                + AnsiOutput.encode(AnsiStyle.NORMAL);
+                + AnsiOutput.encode(AnsiStyle.NORMAL)
+                + (secondaryText != null ? "(" + secondaryText + ")" : "");
     }
 
     private static String getStatus(Status status) {

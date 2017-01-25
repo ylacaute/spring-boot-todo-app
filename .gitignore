@@ -114,3 +114,4 @@ assets
 app-gateway/target
 app-gateway/app-gateway.iml
 sbtest/target
+*.iml

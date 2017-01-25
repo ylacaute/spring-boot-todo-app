@@ -48,7 +48,7 @@ public class CoreConfig {
     }
 
     @Bean
-    @Profile(AppProfiles.PRODUCTION)
+    //@Profile(AppProfiles.PRODUCTION)
     public StartupListener startupListener() {
         return new StartupListener();
     }

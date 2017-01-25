@@ -11,3 +11,5 @@ ${AnsiColor.BRIGHT_CYAN}
        ${AnsiColor.DEFAULT}${spring.application.name} ${AnsiColor.BRIGHT_GREEN}${application.formatted-version}
 
        ${AnsiColor.DEFAULT}Spring Boot Framework ${AnsiColor.BRIGHT_GREEN}${spring-boot.formatted-version}
+
+${AnsiColor.DEFAULT}
