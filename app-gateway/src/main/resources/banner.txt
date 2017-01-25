@@ -8,8 +8,10 @@ ${AnsiColor.BRIGHT_CYAN}
        \/       \/                                 \/                         \/
 
 
-       ${AnsiColor.DEFAULT}${spring.application.name} ${AnsiColor.BRIGHT_GREEN}${application.formatted-version}
+       ${AnsiColor.BRIGHT_WHITE}${spring.application.name} ${AnsiColor.BLUE}${application.formatted-version}
 
-       ${AnsiColor.DEFAULT}Spring Boot Framework ${AnsiColor.BRIGHT_GREEN}${spring-boot.formatted-version}
+       ${AnsiColor.BRIGHT_WHITE}Active profiles: ${AnsiColor.BRIGHT_BLUE}${spring.profiles.active}
+
+       ${AnsiColor.BRIGHT_WHITE}Spring Boot Framework: ${AnsiColor.BRIGHT_BLUE}${spring-boot.formatted-version}
 
 ${AnsiColor.DEFAULT}

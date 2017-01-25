@@ -34,21 +34,9 @@ public class ProfileInitializer implements ApplicationContextInitializer<Configu
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
-        ConfigurableEnvironment env = applicationContext.getEnvironment();
+        //ConfigurableEnvironment env = applicationContext.getEnvironment();
         //Set<String> profiles = getPrimaryProfiles(env.getActiveProfiles());
-        String[] activeProfiles = env.getActiveProfiles();
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println("ACTIVE PROFILES : " + activeProfiles.length);
-        if (activeProfiles.length > 0) {
-            System.out.println("ACTIVE PROFILES[0] : " + activeProfiles[0]);
-        }
-
-
+        //String[] activeProfiles = env.getActiveProfiles();
 
 //        if (profiles.isEmpty())
 //            throw new ProfileException("No primary profile set");
